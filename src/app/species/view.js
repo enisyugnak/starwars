@@ -1,3 +1,4 @@
+import { cleanString } from "@/utils/string";
 import Image from "next/image";
 
 export default function SpeciesView({ data }) {
@@ -7,8 +8,8 @@ export default function SpeciesView({ data }) {
 
       <div className="grid-col grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((item, index) => {
-          const imageName = item.name.replace(/[^a-zA-Z]/g, "").toLowerCase();
-          const image = `/species/${imageName}.jpg`;
+          const imageName = cleanString(item.name, "_");
+          const image = `/species/${imageName}.webp`;
           return (
             <SpecieCard
               key={index}
