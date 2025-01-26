@@ -18,7 +18,7 @@ export default function Header() {
           className="ml-5 h-auto w-20 min-w-20 object-contain"
         />
       </Link>
-
+      <link rel="icon" href="/favicon.png" type="image/png" />
       {/** border right */}
       <div className="mx-3 h-6 border border-r-0 border-neutral-400"></div>
 
