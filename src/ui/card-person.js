@@ -1,25 +1,9 @@
 import Image from "next/image";
-import { IoFemaleSharp, IoMaleSharp } from "react-icons/io5";
+import { IoMaleSharp, IoFemaleSharp } from "react-icons/io5";
 import { LiaRobotSolid } from "react-icons/lia";
 import { TbGenderHermaphrodite } from "react-icons/tb";
 
-export default function ResidentsRow({ people }) {
-  return (
-    <div>
-      <h2 className="mb-5 text-xl font-bold text-white">Residents</h2>
-      <div className="flex flex-col">
-        {people &&
-          people.map((item, index) => {
-            const itemId = item.url.split("/").filter(Boolean).pop();
-            const imageSrc = `/people/${itemId}.jpg`;
-            return <PersonRow key={index} item={item} image={imageSrc} />;
-          })}
-      </div>
-    </div>
-  );
-}
-
-export function PersonRow({ item, image }) {
+export function CardPerson({ item, image }) {
   const iconClass = "w-10 h-10 fill-slate-800/70";
 
   function getGender(gender) {

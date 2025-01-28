@@ -1,6 +1,6 @@
 import Link from "next/link";
 import config from "@/services/config";
-function SectionNavigation() {
+function NavSection() {
   // remove the playground menu item. (to be deleted);
   const menu = config.menu.slice(0, -1);
   return (
@@ -28,4 +28,4 @@ export function Item({ children, ...props }) {
     </Link>
   );
 }
-export default SectionNavigation;
+export default NavSection;

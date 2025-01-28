@@ -1,10 +1,11 @@
 import Image from "next/image";
+import config from "@/services/config";
+import { fetcUrl } from "@/services/fetch";
+import SectionHeader from "@/ui/section-header";
 
 export default async function MoviesDetail({ params }) {
   const { id } = await params;
-  const response = await fetch("https://swapi.py4e.com/api/films/" + id);
-
-  const data = await response.json();
+  const data = await fetcUrl(`${config.apiUrl}/films/${id}`);
 
   const {
     title,
@@ -20,20 +21,31 @@ export default async function MoviesDetail({ params }) {
     species,
   } = data;
 
-  const image = `/movies/episode-${episode_id}.jpg`;
+  const image = `/movies/episode_${episode_id}.webp`;
 
   return (
-    <div className="container mx-auto columns-2">
-      <div className="w-full">
-        <Image src={image} width={180} height={320} alt="" />
-        <h2 className="font-bold">{title}</h2>
-        <p>Release Date: {release_date}</p>
-      </div>
-      <div className="w-full">
-        <p>Director: {director}</p>
-        <p>Producer: {producer}</p>
-        <p>{opening_crawl}</p>
-      </div>
+    <div className="grid grid-cols-1 p-5 md:grid-cols-2">
+      <section className="flex h-full w-full justify-center md:pr-5">
+        <figure className="relative h-full w-full rounded-md bg-slate-700/40 p-4">
+          <Image
+            src={image}
+            width={300}
+            height={400}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="h-full w-full object-cover object-top"
+            alt=""
+          />
+        </figure>
+      </section>
+      <section>
+        <div className="mt-5 w-full md:mt-0">
+          <h1 className="text-4xl font-black text-white">{title}</h1>
+          <p>Release Date: {release_date}</p>
+          <p>Director: {director}</p>
+          <p>Producer: {producer}</p>
+          <p className="mt-5">{opening_crawl}</p>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Navigation from "./navigation";
+import Navigation from "./nav/navigation";
 import Link from "next/link";
-import { VscAccount } from "react-icons/vsc";
 import { FaGlobe } from "react-icons/fa";
 
 export default function Header() {

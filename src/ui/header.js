@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Navigation from "./navigation";
+import Navigation from "./nav/navigation";
 import Link from "next/link";
-import { FaGlobe } from "react-icons/fa";
-import Navbar from "./mobile-nav";
 
 export default function Header() {
   return (

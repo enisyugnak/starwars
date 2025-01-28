@@ -1,4 +1,4 @@
-import DetailsPage from "./details";
+import DetailsPage from "./view";
 import { fetcUrl } from "@/services/fetch";
 
 export default async function PlanetDetail({ params }) {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ResidentsRow from "../ui/residents";
+import ListResidents from "../../../ui/list-residents";
 import InfoRow from "../ui/info";
 import WaterBar from "../ui/waterbar";
 import RoundedBlock from "../ui/rounded";
@@ -8,6 +8,7 @@ import { cleanString } from "@/utils/string";
 import { FaHeart } from "react-icons/fa";
 import { fetchAll } from "@/services/fetch";
 import Link from "next/link";
+import SelfBackButton from "@/ui/button-back";
 
 export default async function DetailsPage({ data }) {
   const {
@@ -32,10 +33,9 @@ export default async function DetailsPage({ data }) {
     <div className="lg:overscroll-y-scroll m-5 flex flex-wrap justify-center gap-8 overscroll-y-none sm:m-3 lg:scrollbar-hide">
       {/** Image Column */}
       <section className="lg:sticky lg:top-[90px] lg:h-[550px]">
+        {/** Browser Back Button */}
         <div className="mb-3 flex">
-          <Link href="/planets/all" className="block font-bold text-sky-500">
-            {`<`} BACK
-          </Link>
+          <SelfBackButton />
         </div>
         <div className="rounded-md bg-slate-800/50 p-5">
           <figure className="group relative h-[240px] w-[320px] cursor-pointer overflow-hidden sm:h-[500px] sm:w-[500px]">
@@ -57,7 +57,7 @@ export default async function DetailsPage({ data }) {
           <span className="ml-auto">
             <FaHeart />
           </span>
-          <span>{/** button gelecek */}</span>
+          <span>{/** TODO: button gelecek */}</span>
         </div>
         {/** 2st Row , Tarrain etc */}
         <div className="flex justify-between">
@@ -76,7 +76,7 @@ export default async function DetailsPage({ data }) {
         {/** 4th Row Water Info Bar */}
         <WaterBar percent={surface_water} />
         {/** 5th Row Residents List */}
-        <ResidentsRow people={people} />
+        <ListResidents people={people} />
       </section>
     </div>
     // <SelfButton endpoint="/planets">Go Back</SelfButton>

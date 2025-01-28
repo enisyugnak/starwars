@@ -1,7 +1,6 @@
 "use client";
-
-import SelfIcon from "@/ui/icons";
-
+import { useEffect, useState } from "react";
+import Pagination from "@/ui/section-pagination";
 export default function PlayGroundView() {
   const images = [
     "/people/1.jpg",
@@ -10,9 +9,18 @@ export default function PlayGroundView() {
     "/people/4.jpg",
     "/people/3.jpg",
   ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    console.log("view: index", index);
+  }, [index]);
+
   return (
     <section>
-      <div className="mx-8 mt-5 flex flex-col items-center"></div>
+      <div>
+        <Pagination setIndex={setIndex} />
+      </div>
     </section>
   );
 }

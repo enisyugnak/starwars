@@ -1,35 +1,29 @@
 "use client";
-import Image from "next/image";
-import Hero from "./ui/hero";
-import PlanetsList from "./ui/planets";
 import Link from "next/link";
 import SectionHeader from "@/ui/section-header";
-import SectionNavigation from "@/ui/section-navigation";
+import NavSection from "@/ui/nav/nav-section";
+import HeroPlanets from "@/ui/hero-planets";
+import PlanetsPaginated from "@/ui/planets-paginated";
 
 export default function PlanetsView({ list }) {
+  const data = {
+    image: "/planets-alpha/toydaria.webp",
+    pill: "87 Characters",
+    title: "Discover your favorite character in the whole universe",
+    body: "This page is dedicated to StarWars characters. This is an updated list from swapi api.",
+  };
+
   return (
     <div className="flex w-full flex-col gap-10">
-      {/** Hero */}
+      {/** Planets Hero */}
       <section>
-        <div className="grid-col grid justify-center md:grid-cols-2">
-          <div className="flex w-full items-center justify-center p-10">
-            <Image
-              src="/planets-alpha/toydaria.webp"
-              alt=""
-              width={500}
-              height={500}
-            />
-          </div>
-          <div className="w-full pt-16 md:pl-5">
-            <Hero />
-          </div>
-        </div>
+        <HeroPlanets data={data} />
       </section>
 
       {/** Planets List */}
       <section>
         <div className="flex items-end justify-between">
-          <SectionHeader>Random Planets</SectionHeader>
+          <SectionHeader>Planets</SectionHeader>
           <Link
             href="/planets/all"
             className="pb-2 pr-5 font-bold text-sky-500"
@@ -37,12 +31,14 @@ export default function PlanetsView({ list }) {
             VIEW ALL {`>`}
           </Link>
         </div>
-        <PlanetsList list={list} />
+
+        <PlanetsPaginated data={list} />
       </section>
+
       {/** Site Navigation */}
       <section>
         <SectionHeader>Navigation</SectionHeader>
-        <SectionNavigation />
+        <NavSection />
       </section>
     </div>
   );

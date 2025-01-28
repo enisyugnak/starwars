@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { cleanString } from "@/utils/string";
 
-export default function PlanetsCard(props) {
+export default function CardPlanet(props) {
   const { terrain, url, name, population } = props.data;
   const endpoint = props.endpoint;
   const itemId = url.split("/").filter(Boolean).pop();

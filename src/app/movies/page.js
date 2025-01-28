@@ -1,14 +1,11 @@
-import CardMovie from "../../feature/card-movie";
+import config from "@/services/config";
+import MoviesView from "./view";
+import { fetcUrl } from "@/services/fetch";
 
 export default async function Movies() {
-  //await new Promise((resolve) => setTimeout(resolve, 2000)); //loading test
-  const response = await fetch("https://swapi.py4e.com/api/films/");
-  const data = await response.json();
+  const url = `${config.apiUrl}/films`;
+  const data = await fetcUrl(url);
   const movies = data.results;
 
-  const moviesList = movies.map((item, index) => {
-    return <CardMovie key={index} data={item} />;
-  });
-
-  return <div className="flex gap-3">{moviesList}</div>;
+  return <MoviesView movies={movies} />;
 }

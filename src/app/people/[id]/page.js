@@ -1,5 +1,4 @@
 import config from "@/services/config";
-import Planet from "../planet";
 
 export default async function PeopleDetail({ params }) {
   const { id } = await params;
@@ -34,10 +33,9 @@ export default async function PeopleDetail({ params }) {
         <h2 className="font-bold">eye_color: {eye_color}</h2>
         <h2 className="font-bold">birth_year: {birth_year}</h2>
         <h2 className="font-bold">gender: {gender}</h2>
+        <h2 className="font-bold">homeworld: {homeworld}</h2>
       </div>
-      <div>
-        <Planet homeworld={homeworld} />
-      </div>
+      <div></div>
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { PiPlanet } from "react-icons/pi";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { FaTruckMonster } from "react-icons/fa";
-import { RiRobot3Fill } from "react-icons/ri";
 import { RiRobot3Line } from "react-icons/ri";
 
 const config = {
