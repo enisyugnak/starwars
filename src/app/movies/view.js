@@ -18,7 +18,10 @@ export default function MoviesView({ movies }) {
 
 export function MoviePoster({ item, image }) {
   const release = item.release_date.split("-")[0];
-  const link = `/movies/${item.episode_id}`;
+  const parts = item.url.split("/");
+  const url = parts[parts.length - 2];
+  const link = `/movies/${url}`;
+
   return (
     <div className="group relative w-full cursor-pointer rounded-md bg-slate-700/40 p-2">
       <Link href={link}>

@@ -1,5 +1,6 @@
 import config from "@/services/config";
 import { fetchPaginatedData } from "@/services/fetch";
+import StarShipsView from "./view";
 
 export default async function StarShips() {
   //await new Promise((resolve) => setTimeout(resolve, 15000)); //loading test
@@ -7,19 +8,6 @@ export default async function StarShips() {
   const apiUrl = config.apiUrl;
   const url = `${apiUrl}/starships/`;
   const data = await fetchPaginatedData(url);
-  data.sort((a, b) => {
-    return a.name.localeCompare(b.name);
-  });
 
-  return (
-    <div className="flex flex-wrap gap-5">
-      {data.map((item, index) => {
-        return (
-          <div key={index} className="text-white">
-            {item.name}
-          </div>
-        );
-      })}
-    </div>
-  );
+  return <StarShipsView data={data} />;
 }

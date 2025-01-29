@@ -1,25 +1,13 @@
 import Image from "next/image";
-import { IoMaleSharp, IoFemaleSharp } from "react-icons/io5";
-import { LiaRobotSolid } from "react-icons/lia";
-import { TbGenderHermaphrodite } from "react-icons/tb";
+import { getGender } from "./icon/gender";
 
-export function CardPerson({ item, image }) {
-  const iconClass = "w-10 h-10 fill-slate-800/70";
-
-  function getGender(gender) {
-    if (gender == "n/a") return <LiaRobotSolid className={iconClass} />;
-    if (gender == "male") return <IoMaleSharp className={iconClass} />;
-    if (gender == "hermaphrodite")
-      return <TbGenderHermaphrodite className={iconClass} />;
-
-    if (gender == "female") return <IoFemaleSharp className={iconClass} />;
-  }
+export function CardPerson({ item }) {
   return (
     <div className="flex items-center gap-5 border-t border-slate-800/70 py-3 last:border-b">
       <div className="h-16 w-16 overflow-hidden rounded-full border-4 border-slate-800/70">
         <div className="relative h-full w-full">
           <Image
-            src={image}
+            src={item.image}
             alt=""
             width={60}
             height={60}

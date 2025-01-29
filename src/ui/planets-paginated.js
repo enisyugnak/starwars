@@ -5,17 +5,17 @@ import Pagination from "./section-pagination";
 
 export default function PlanetsPaginated({ data }) {
   const [list, setList] = useState();
-  const [index, setIndex] = useState(null);
+  const [index, setIndex] = useState(0);
   const pageSize = 10;
   const pageCount = Math.ceil(data.length / pageSize);
 
   useEffect(() => {
-    const storedPage = localStorage.getItem("planetsPage");
-    setIndex(storedPage ? Number(storedPage) : 0);
+    //const storedPage = localStorage.getItem("planetsPage");
+    //setIndex(storedPage ? Number(storedPage) : 0);
   }, []);
 
   useEffect(() => {
-    index && localStorage.setItem("planetsPage", index);
+    //index && localStorage.setItem("planetsPage", index);
 
     if (data && data.length) {
       const nextValue = index * pageSize;

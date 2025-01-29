@@ -8,9 +8,9 @@ import PlanetsPaginated from "@/ui/planets-paginated";
 export default function PlanetsView({ list }) {
   const data = {
     image: "/planets-alpha/toydaria.webp",
-    pill: "87 Characters",
-    title: "Discover your favorite character in the whole universe",
-    body: "This page is dedicated to StarWars characters. This is an updated list from swapi api.",
+    pill: "61 Planets",
+    title: "Discover your favorite planet in the whole universe",
+    body: "This page is dedicated to StarWars planets. This is an updated list from swapi api.",
   };
 
   return (

@@ -29,14 +29,12 @@ export default async function DetailsPage({ data }) {
   const cleanName = cleanString(name, "_");
   const imageSrc = `/planets/${cleanName}.webp`;
 
+  console.log("view: resident", residents);
+
   return (
     <div className="lg:overscroll-y-scroll m-5 flex flex-wrap justify-center gap-8 overscroll-y-none sm:m-3 lg:scrollbar-hide">
       {/** Image Column */}
       <section className="lg:sticky lg:top-[90px] lg:h-[550px]">
-        {/** Browser Back Button */}
-        <div className="mb-3 flex">
-          <SelfBackButton />
-        </div>
         <div className="rounded-md bg-slate-800/50 p-5">
           <figure className="group relative h-[240px] w-[320px] cursor-pointer overflow-hidden sm:h-[500px] sm:w-[500px]">
             <Image
@@ -76,7 +74,7 @@ export default async function DetailsPage({ data }) {
         {/** 4th Row Water Info Bar */}
         <WaterBar percent={surface_water} />
         {/** 5th Row Residents List */}
-        <ListResidents people={people} />
+        {people && <ListResidents people={people} />}
       </section>
     </div>
     // <SelfButton endpoint="/planets">Go Back</SelfButton>
