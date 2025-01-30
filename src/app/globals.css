@@ -29,3 +29,11 @@ body {
 .app {
   min-height: 100vh;
 }
+
+.noise-bg {
+  position: absolute;
+  inset: 0;
+  background: url("/noisy.png"); /* Use a small transparent noise texture */
+  opacity: 0.1; /* Adjust for subtle effect */
+  z-index: -1;
+}

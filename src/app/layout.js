@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <div className="flex min-h-screen flex-col">
           {/* <div className='flex flex-col min-h-screen bg-cover bg-center bg-[url("/bg/bg5.jpg")]'> */}
           <Header />
-
+          <div className="noise-bg"></div>
           <div className="relative m-3 flex-grow pt-[80px] sm:m-8">
             {children}
           </div>

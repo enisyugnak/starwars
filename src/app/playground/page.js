@@ -1,8 +1,12 @@
-import Image from "next/image";
+import config from "@/services/config";
 import PlayGroundView from "./view";
+import { fetchPaginatedData } from "@/services/fetch";
 
 const PlayGround = async () => {
-  return <PlayGroundView />;
+  const url = `${config.apiUrl}/species/`;
+  const data = await fetchPaginatedData(url);
+
+  return <PlayGroundView data={data} />;
 };
 
 export default PlayGround;

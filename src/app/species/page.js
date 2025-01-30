@@ -9,5 +9,5 @@ export default async function Species() {
     return a.name.localeCompare(b.name);
   });
 
-  return <SpeciesView data={data} />;
+  return "";
 }
