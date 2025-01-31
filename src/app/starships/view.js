@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Modal from "./modals";
 import { fetcUrl } from "@/services/fetch";
+import Loading from "../loading";
 
 export default function StarShipsView({ data }) {
   const [details, setDetails] = useState(null);
@@ -75,17 +76,15 @@ export function DetailView({ data, setDetails }) {
     <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
       <div className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7">
         {/** Image */}
-        <div className="p-3 lg:col-span-4">
-          <figure className="relative aspect-video h-full w-full">
-            <Image
-              src={image}
-              alt=""
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="relative h-full w-full rounded-md object-cover"
-            />
-          </figure>
-        </div>
+
+        <ImageLoader
+          image={image}
+          alt={image}
+          className="p-3 lg:col-span-4"
+          figureClass="aspect-video"
+          imgClass="rounded-md object-cover"
+        />
+
         {/** Details */}
         <div className="py-3 lg:col-span-3">
           <h2 className="text-2xl font-bold text-white">{data.name}</h2>
@@ -109,6 +108,35 @@ export function DetailView({ data, setDetails }) {
         </div>
       </div>
     </Modal>
+  );
+}
+
+export function ImageLoader({
+  image,
+  alt = "",
+  className = "",
+  figureClass = "",
+  imgClass = "",
+}) {
+  const [loading, setLoading] = useState(true);
+  return (
+    <div className={`${className} relative`}>
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-700/60">
+          <Loading />
+        </div>
+      )}
+      <figure className={`${figureClass} relative h-full w-full`}>
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className={`${imgClass} h-full w-full`}
+          onLoad={() => setLoading(false)}
+        />
+      </figure>
+    </div>
   );
 }
 

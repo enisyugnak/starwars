@@ -1,9 +1,11 @@
 "use client";
+import Loading from "@/app/loading";
 import RoundedBlock from "@/app/planets/ui/rounded";
 import ColorSpecies from "@/ui/colors-species";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
+import { useState } from "react";
 export default function SpeciesDetail({ data }) {
   const {
     name,
@@ -27,29 +29,26 @@ export default function SpeciesDetail({ data }) {
     <div className="grid grid-cols-1 lg:grid-cols-12">
       {/** Image Section */}
       <section className="relative lg:col-span-8">
+        {/** Header */}
         <div className="relative flex items-center gap-3">
           <SectionHeader>{name}</SectionHeader>
           <div className="text-sky-500">{classification}</div>
         </div>
 
-        <div className="relative">
-          <figure className="aspect-[3/4] h-[calc(100vh-120px)] min-h-[400px] w-full">
-            <Image
-              src={image}
-              alt=""
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="h-full w-full rounded-md object-cover object-top"
-            />
-          </figure>
-          {/** Details on Image */}
-          {/* <div className="absolute bottom-0 left-0 h-auto w-full bg-teal-800 sm:hidden">
+        {/** Image */}
+        <ImageHolder
+          image={image}
+          alt={name}
+          className="aspect-[3/4] h-[calc(100vh-140px)] min-h-[400px] w-full"
+        />
+
+        {/** Details on Image */}
+        {/* <div className="absolute bottom-0 left-0 h-auto w-full bg-teal-800 sm:hidden">
             <div>{designation}</div>
             <div>{skin_colors}</div>
             <div>{hair_colors}</div>
             <div>{eye_colors}</div>
           </div> */}
-        </div>
       </section>
       {/** Details Section */}
 
@@ -81,6 +80,29 @@ export default function SpeciesDetail({ data }) {
           <h1>Films </h1>
           <div className="break-words">{films}</div> */}
       </section>
+    </div>
+  );
+}
+
+export function ImageHolder({ image, alt, className }) {
+  const [loading, setLoading] = useState(true);
+  return (
+    <div className="relative">
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-700/60">
+          <Loading />
+        </div>
+      )}
+      <figure className={`${className}`}>
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="h-full w-full rounded-md object-cover object-top"
+          onLoad={() => setLoading(false)}
+        />
+      </figure>
     </div>
   );
 }
