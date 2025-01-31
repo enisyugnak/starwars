@@ -65,7 +65,9 @@ export function DetailView({ data, setDetails }) {
     }
   }, [data]);
 
-  const cleanName = cleanString(data.name, "_");
+  if (data) {
+    var cleanName = cleanString(data.name, "_");
+  }
   const image = `/starships/${cleanName}.webp`;
 
   if (!data) return;
