@@ -1,8 +1,13 @@
+"use client";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Modal from "./modals";
+import { fetcUrl } from "@/services/fetch";
 
 export default function StarShipsView({ data }) {
+  const [details, setDetails] = useState(null);
   const list =
     data &&
     data.map((item) => {
@@ -11,19 +16,32 @@ export default function StarShipsView({ data }) {
       return { ...item, image };
     });
 
+  const loadStarShipDetail = async (item) => {
+    const data = await fetcUrl(item.url);
+    setDetails(data);
+  };
+
   return (
     <section className="w-full">
       <SectionHeader>StarShips</SectionHeader>
+      {/** Modal view */}
+      <DetailView data={details} setDetails={setDetails} />
+      {/** Content */}
       <div className="grid-cols grid w-full gap-3 md:grid-cols-2 lg:grid-cols-3">
         {list.map((item, index) => {
           return (
-            <div key={index} className="group relative w-full">
+            <div
+              key={index}
+              className="group relative w-full"
+              onClick={() => loadStarShipDetail(item)}
+            >
               <div className="cursor-pointer rounded-md bg-slate-700/60 p-3">
                 <figure className="relative aspect-square overflow-hidden">
                   <Image
                     src={item.image}
                     fill
                     alt=""
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="relative h-full w-full transform object-cover duration-300 group-hover:scale-110"
                   />
                 </figure>
@@ -38,3 +56,81 @@ export default function StarShipsView({ data }) {
     </section>
   );
 }
+
+export function DetailView({ data, setDetails }) {
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    if (data) {
+      setIsOpen(true);
+    }
+  }, [data]);
+
+  const cleanName = cleanString(data.name, "_");
+  const image = `/starships/${cleanName}.webp`;
+
+  if (!data) return;
+  return (
+    <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <div className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7">
+        {/** Image */}
+        <div className="p-3 lg:col-span-4">
+          <figure className="relative aspect-video h-full w-full">
+            <Image
+              src={image}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="relative h-full w-full rounded-md object-cover"
+            />
+          </figure>
+        </div>
+        {/** Details */}
+        <div className="py-3 lg:col-span-3">
+          <h2 className="text-2xl font-bold text-white">{data.name}</h2>
+          <div className="mb-3 text-base">{data.manufacturer}</div>
+          <div className="text-base">
+            cost_in_credits {data.cost_in_credits}
+          </div>
+          <div className="text-base">length:{data.length}</div>
+          <div className="text-base">
+            max_atmosphering_speed:{data.max_atmosphering_speed}
+          </div>
+          <div className="text-base">crew: {data.name}</div>
+          <div className="text-base">passengers: {data.passengers}</div>
+          <div className="text-base">cargo_capacity: {data.cargo_capacity}</div>
+          <div className="text-base">consumables: {data.consumables}</div>
+          <div className="text-base">MGLT: {data.MGLT}</div>
+          <div className="text-base">starship_class: {data.starship_class}</div>
+          <div className="text-base">
+            hyperdrive_rating: {data.hyperdrive_rating}
+          </div>
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+//   {
+//     "name": "CR90 corvette",
+//     "model": "CR90 corvette",
+//     "manufacturer": "Corellian Engineering Corporation",
+//     "cost_in_credits": "3500000",
+//     "length": "150",
+//     "max_atmosphering_speed": "950",
+//     "crew": "30-165",
+//     "passengers": "600",
+//     "cargo_capacity": "3000000",
+//     "consumables": "1 year",
+//     "hyperdrive_rating": "2.0",
+//     "MGLT": "60",
+//     "starship_class": "corvette",
+//     "pilots": [],
+//     "films": [
+//         "https://swapi.py4e.com/api/films/1/",
+//         "https://swapi.py4e.com/api/films/3/",
+//         "https://swapi.py4e.com/api/films/6/"
+//     ],
+//     "created": "2014-12-10T14:20:33.369000Z",
+//     "edited": "2014-12-20T21:23:49.867000Z",
+//     "url": "https://swapi.py4e.com/api/starships/2/"
+// }
