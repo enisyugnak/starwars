@@ -3,7 +3,7 @@ import { CardPersonBig } from "@/ui/card-person-big";
 export default function CharactersSection({ list }) {
   const data = list.map((item) => {
     const itemId = item.url.split("/").filter(Boolean).pop();
-    const image = `/people/${itemId}.jpg`;
+    const image = `/people/${itemId}.webp`;
     return { ...item, image };
   });
 
