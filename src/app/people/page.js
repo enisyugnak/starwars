@@ -1,10 +1,12 @@
+import { fetcUrl } from "@/services/fetch";
+import PeopleView from "./view";
+import config from "@/services/config";
+
 const People = async () => {
-  return (
-    <div>
-      <h2>Welcome to the people page</h2>
-      <p>Please select the person to see the details.</p>
-    </div>
-  );
+  const apiUrl = config.apiUrl;
+  const data = await fetcUrl(`${apiUrl}/people`);
+
+  return <PeopleView data={data} />;
 };
 
 export default People;

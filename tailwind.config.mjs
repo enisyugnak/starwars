@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
+  darkMode: ["class"],
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
@@ -12,13 +13,26 @@ const config = {
       },
       keyframes: {
         slideUp: {
-          "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(-50%)" },
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "100%": {
+            transform: "translateY(-50%)",
+          },
         },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
-  plugins: [require("daisyui"), require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("daisyui"),
+    require("tailwind-scrollbar-hide"),
+    require("tailwindcss-animate"),
+  ],
 };
 
 export default config;

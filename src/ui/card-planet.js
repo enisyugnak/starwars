@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { cleanString } from "@/utils/string";
+import { useState } from "react";
 
 export default function CardPlanet(props) {
   const [loading, setLoading] = useState(true);

@@ -1,10 +1,7 @@
 "use client";
 import { fetchAll } from "@/services/fetch";
-import { CardPerson } from "@/ui/card-person";
-import { CardSpecies } from "@/ui/card-species";
 import PlanetsPaginated from "@/ui/planets-paginated";
 import SectionHeader from "@/ui/section-header";
-import { cleanString } from "@/utils/string";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SpeciesSection from "./ui/species";

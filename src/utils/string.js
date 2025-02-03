@@ -1,7 +1,9 @@
 export function cleanString(input, separate = "") {
   return input
     .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, "") // Remove all non-alphanumeric characters except spaces
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s]/g, "")
     .replace(/\s+/g, separate); // Replace spaces with underscores
 }
 
