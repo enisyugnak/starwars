@@ -22,12 +22,15 @@ export default function PeopleList({ data }) {
   };
 
   return (
-    <div className="w-full">
-      <div className="">
-        {list.map((item, index) => (
-          <CardPeople key={index} item={item} />
-        ))}
+    <div>
+      <div className="w-full">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {list.map((item, index) => (
+            <CardPeople key={index} item={item} />
+          ))}
+        </div>
       </div>
+
       <button
         className="btn mt-3 bg-slate-700 text-white"
         hidden={!nextPage}

@@ -1,5 +1,7 @@
+"use client";
 import { CardSpecies } from "@/ui/card-species";
 import { cleanString } from "@/utils/string";
+import { useEffect } from "react";
 
 export default function SpeciesView({ data }) {
   const list = data.map((item) => {
