@@ -12,7 +12,10 @@ export default async function Layout({ children }) {
       {/** Left List of Species*/}
       <div className="flex flex-col md:col-span-3 lg:col-span-2">
         <SectionHeader>Species</SectionHeader>
-        <div className="h-[200px] min-h-[400px] w-full overflow-y-auto md:h-[calc(100vh-120px)] md:pr-3">
+        <div
+          id="species-list-container"
+          className="h-[200px] min-h-[400px] w-full overflow-y-auto md:h-[calc(100vh-120px)] md:pr-3"
+        >
           <List data={data} />
         </div>
       </div>

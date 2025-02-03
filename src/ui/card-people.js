@@ -11,7 +11,7 @@ export function CardPeople({ item }) {
 
   return (
     <Link href={getPersonId(item.url)}>
-      <div className="group relative flex items-end gap-5 overflow-hidden border-2 border-slate-700/60 bg-slate-800/20 p-1">
+      <div className="group relative flex items-end gap-5 overflow-hidden border border-slate-700/60 bg-slate-800/20 p-1">
         <div className="absolute right-2 top-2">{getGender(item.gender)}</div>
         <div className="min-h-16 min-w-16 overflow-hidden border-slate-700/60">
           <div className="relative h-full w-full">

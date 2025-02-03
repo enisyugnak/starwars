@@ -1,11 +1,12 @@
 "use client";
 import { CardSpecies } from "@/ui/card-species";
 import { cleanString } from "@/utils/string";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function List({ data }) {
   const route = useRouter();
+  const path = usePathname();
   const list =
     data &&
     data.map((item) => {
@@ -14,14 +15,30 @@ export default function List({ data }) {
       return { ...item, image };
     });
 
+  const urlSplit = list[0].url.split("/");
+  const pathSplit = path.split("/");
+  const pathId = pathSplit[2];
+  const linkId = urlSplit.slice(-2)[0];
+
   useEffect(() => {
     if (list) {
-      const urlSplit = list[0].url.split("/");
-      const linkId = urlSplit.slice(-2)[0];
       const link = `/species/${linkId}`;
-      route.replace(link);
+      !pathId && route.replace(link);
     }
-  }, [list]);
+  }, [list, path]);
+
+  useEffect(() => {
+    const activeItem = document.getElementById(`card-${pathId}`);
+    const container = document.getElementById("species-list-container");
+
+    if (activeItem && container) {
+      console.log("list: card-id", `card-${pathId}`);
+      container.scrollTo({
+        top: activeItem.offsetTop - container.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }, [pathId]);
 
   return (
     <div className="grid h-full grid-cols-2 gap-2 md:flex md:flex-col md:gap-3">

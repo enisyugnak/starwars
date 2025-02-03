@@ -1,15 +1,28 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export const CardSpecies = ({ item, index, dynoClass }) => {
+export const CardSpecies = ({ cardId, item, index, dynoClass }) => {
+  const path = usePathname();
   const urlSplit = item.url.split("/");
   const linkId = urlSplit.slice(-2)[0];
   const link = `/species/${linkId}`;
 
+  const pathSplit = path.split("/").slice(-2)[1];
+  const pathName = path.split("/").slice(-2)[0];
+
+  const active = pathSplit === linkId;
+  const currentLink =
+    pathName === "species" && active
+      ? "pointer-events-none select-none bg-teal-800/20"
+      : "bg-slate-800/20";
+
   return (
     <Link href={link} className="block">
       <div
-        className={`${dynoClass} group flex h-[90px] w-full min-w-[240px] cursor-pointer items-center gap-4 rounded-lg border border-slate-800/70 bg-slate-800/20 hover:bg-teal-800/20 sm:gap-2`}
+        id={`card-${linkId}`}
+        className={`${dynoClass} group flex h-[90px] w-full min-w-[240px] cursor-pointer items-center gap-4 rounded-lg border border-slate-800/70 hover:bg-teal-800/20 sm:gap-2 ${currentLink}`}
       >
         {/** Image */}
 
