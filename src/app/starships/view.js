@@ -1,32 +1,25 @@
 "use client";
 import SectionHeader from "@/ui/section-header";
-import { cleanString } from "@/utils/string";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Modal from "./modals";
+import { addImageToJson } from "@/utils/data";
 import { fetcUrl } from "@/services/fetch";
-import Loading from "../loading";
+import { useState } from "react";
+import Image from "next/image";
+import StarshipDetails from "./details";
 
 export default function StarShipsView({ data }) {
   const [details, setDetails] = useState(null);
-  const list =
-    data &&
-    data.map((item) => {
-      const imageName = cleanString(item.name, "_");
-      const image = `/starships/${imageName}.webp`;
-      return { ...item, image };
-    });
+  const list = data && addImageToJson(data, "starships");
 
   const loadStarShipDetail = async (item) => {
-    const data = await fetcUrl(item.url);
-    setDetails(data);
+    const details = await fetcUrl(item.url);
+    setDetails(details);
   };
 
   return (
     <section className="w-full">
       <SectionHeader>StarShips</SectionHeader>
       {/** Modal view */}
-      <DetailView data={details} setDetails={setDetails} />
+      <StarshipDetails data={details} />
       {/** Content */}
       <div className="grid-cols grid w-full gap-3 md:grid-cols-2 lg:grid-cols-3">
         {list.map((item, index) => {
@@ -55,88 +48,6 @@ export default function StarShipsView({ data }) {
         })}
       </div>
     </section>
-  );
-}
-
-export function DetailView({ data, setDetails }) {
-  const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {
-    if (data) {
-      setIsOpen(true);
-    }
-  }, [data]);
-
-  if (data) {
-    var cleanName = cleanString(data.name, "_");
-  }
-  const image = `/starships/${cleanName}.webp`;
-
-  if (!data) return;
-  return (
-    <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-      <div className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7">
-        {/** Image */}
-
-        <ImageLoader
-          image={image}
-          alt={image}
-          className="p-3 lg:col-span-4"
-          figureClass="aspect-video"
-          imgClass="rounded-md object-cover"
-        />
-
-        {/** Details */}
-        <div className="py-3 lg:col-span-3">
-          <h2 className="text-2xl font-bold text-white">{data.name}</h2>
-          <div className="mb-3 text-base">{data.manufacturer}</div>
-          <div className="text-base">
-            cost_in_credits {data.cost_in_credits}
-          </div>
-          <div className="text-base">length:{data.length}</div>
-          <div className="text-base">
-            max_atmosphering_speed:{data.max_atmosphering_speed}
-          </div>
-          <div className="text-base">crew: {data.name}</div>
-          <div className="text-base">passengers: {data.passengers}</div>
-          <div className="text-base">cargo_capacity: {data.cargo_capacity}</div>
-          <div className="text-base">consumables: {data.consumables}</div>
-          <div className="text-base">MGLT: {data.MGLT}</div>
-          <div className="text-base">starship_class: {data.starship_class}</div>
-          <div className="text-base">
-            hyperdrive_rating: {data.hyperdrive_rating}
-          </div>
-        </div>
-      </div>
-    </Modal>
-  );
-}
-
-export function ImageLoader({
-  image,
-  alt = "",
-  className = "",
-  figureClass = "",
-  imgClass = "",
-}) {
-  const [loading, setLoading] = useState(true);
-  return (
-    <div className={`${className} relative`}>
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-700/60">
-          <Loading />
-        </div>
-      )}
-      <figure className={`${figureClass} relative h-full w-full`}>
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className={`${imgClass} h-full w-full`}
-          onLoad={() => setLoading(false)}
-        />
-      </figure>
-    </div>
   );
 }
 

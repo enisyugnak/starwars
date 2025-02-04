@@ -21,18 +21,9 @@ const config = {
           },
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("tailwind-scrollbar-hide"),
-    require("tailwindcss-animate"),
-  ],
+  plugins: [require("tailwind-scrollbar-hide"), require("tailwindcss-animate")],
 };
 
 export default config;

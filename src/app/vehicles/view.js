@@ -20,7 +20,7 @@ export default function VehiclesView({ data }) {
             <div key={index}>
               <div className="group cursor-pointer rounded-md bg-slate-700/60 p-3">
                 <div className="relative h-full w-full overflow-hidden">
-                  <figure className="aspect-video">
+                  <figure className="relative aspect-video">
                     <Image
                       src={item.image}
                       alt=""

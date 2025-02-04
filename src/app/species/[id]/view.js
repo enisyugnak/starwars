@@ -10,7 +10,6 @@ export default function SpeciesDetail({ data }) {
   const {
     name,
     classification,
-    designation,
     average_height,
     skin_colors,
     hair_colors,

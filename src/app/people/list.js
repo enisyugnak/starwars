@@ -2,7 +2,6 @@
 
 import { CardPeople } from "@/ui/card-people";
 import { addImageToJson } from "@/utils/data";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function PeopleList({ data }) {
