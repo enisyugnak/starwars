@@ -1,11 +1,7 @@
 "use client";
-import { fetchAll } from "@/services/fetch";
-import PlanetsPaginated from "@/ui/planets-paginated";
 import SectionHeader from "@/ui/section-header";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import SpeciesSection from "./ui/species";
-import CharactersSection from "./ui/characters";
+import PageSection from "./ui/section";
 
 export default function MovieDetail({ data }) {
   const {
@@ -21,23 +17,6 @@ export default function MovieDetail({ data }) {
     vehicles,
     species,
   } = data;
-
-  const [chars, setChars] = useState([]);
-  const [speciesData, setSpeciesData] = useState([]);
-  const [planetsList, setPlanetsList] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const charsResult = await fetchAll(characters);
-      const speciesResult = await fetchAll(species);
-      const planetsResult = await fetchAll(planets);
-      setChars(charsResult);
-      setSpeciesData(speciesResult);
-      setPlanetsList(planetsResult);
-    };
-
-    if (data) fetchData();
-  }, [data]);
 
   const image = `/movies/episode_${episode_id}.webp`;
 
@@ -68,44 +47,11 @@ export default function MovieDetail({ data }) {
         </section>
       </div>
 
-      {/** Planets */}
-      <section className="w-full">
-        <SectionHeader>Planets</SectionHeader>
-        <PlanetsPaginated data={planetsList} />
-      </section>
-
-      {/** Characters */}
-      <section className="w-full">
-        <SectionHeader>Characters</SectionHeader>
-        <CharactersSection list={chars} />
-      </section>
-      {/** Species */}
-      <section className="w-full">
-        <SectionHeader>Species</SectionHeader>
-        <SpeciesSection list={speciesData} />
-      </section>
-
-      {/** Vehicles */}
-      <section className="w-full">
-        <SectionHeader>Vehicles</SectionHeader>
-        <ul>
-          {vehicles.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </ul>
-        {/* <PlanetsPaginated data={planetsList} /> */}
-      </section>
-
-      {/** Starships */}
-      <section className="flex w-full flex-col">
-        <SectionHeader>Starships</SectionHeader>
-        {/* <SpeciesSection list={speciesData} /> */}
-        <div>
-          {starships.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </div>
-      </section>
+      <PageSection list={planets} section="planets" />
+      <PageSection list={characters} section="characters" />
+      <PageSection list={species} section="species" />
+      <PageSection list={vehicles} section="vehicles" />
+      <PageSection list={starships} section="starships" />
     </div>
   );
 }

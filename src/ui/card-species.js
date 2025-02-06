@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const CardSpecies = ({ cardId, item, index, dynoClass }) => {
+export const CardSpecies = ({ item, index, dynoClass }) => {
   const path = usePathname();
   const urlSplit = item.url.split("/");
   const linkId = urlSplit.slice(-2)[0];

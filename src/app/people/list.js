@@ -1,12 +1,13 @@
 "use client";
 
+import SelfButton from "@/ui/button";
 import { CardPeople } from "@/ui/card-people";
 import { addImageToJson } from "@/utils/data";
 import { useState } from "react";
 
 export default function PeopleList({ data }) {
   const { results, next } = data;
-  const resultImages = addImageToJson(results, "people");
+  const resultImages = addImageToJson(results, "characters");
   const [nextPage, setNextPage] = useState(next);
   const [list, setList] = useState(resultImages);
 
@@ -14,7 +15,7 @@ export default function PeopleList({ data }) {
     if (nextPage) {
       const res = await fetch(nextPage);
       const data = await res.json();
-      const resultImages = addImageToJson(data.results, "people");
+      const resultImages = addImageToJson(data.results, "characters");
       setList((prev) => [...prev, ...resultImages]);
       setNextPage(data.next);
     }
@@ -30,13 +31,9 @@ export default function PeopleList({ data }) {
         </div>
       </div>
 
-      <button
-        className="btn mt-3 bg-slate-700 text-white"
-        hidden={!nextPage}
-        onClick={loadPage}
-      >
+      <SelfButton hidden={!nextPage} onClick={loadPage} className="mt-3">
         Load More
-      </button>
+      </SelfButton>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const useBlurImage = (image) => {
-  console.log("blur-image: iamge", image);
   const [blurDataURL, setBlurDataURL] = useState(null);
 
   useEffect(() => {

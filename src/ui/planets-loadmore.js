@@ -32,7 +32,7 @@ export default function PlanetsLoadMore({ data }) {
     <div>
       {/** Planets List */}
 
-      {list && <ListPlanets list={list} />}
+      {list && <ListPlanets data={list} />}
 
       {/** Pagination */}
       <div className="mt-7 flex justify-center">

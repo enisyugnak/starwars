@@ -29,8 +29,6 @@ export default async function DetailsPage({ data }) {
   const cleanName = cleanString(name, "_");
   const imageSrc = `/planets/${cleanName}.webp`;
 
-  console.log("view: resident", residents);
-
   return (
     <div className="lg:overscroll-y-scroll m-5 flex flex-wrap justify-center gap-8 overscroll-y-none sm:m-3 lg:scrollbar-hide">
       {/** Image Column */}

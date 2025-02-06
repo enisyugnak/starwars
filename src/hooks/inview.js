@@ -18,7 +18,7 @@ export default function useInView({
           console.log("Triggered!");
 
           if (triggerOnce) {
-            observer.disconnect(); // Stop observing after first trigger
+            observer.disconnect();
             console.log("Observer stopped!");
           }
         } else if (!triggerOnce) {
@@ -35,9 +35,7 @@ export default function useInView({
   return { ref, inView };
 }
 
-/**
- * usage
- */
+/** Example Usage */
 
 // export default function ObserverComponent() {
 //   const { ref, isInView } = useInView({ threshold: 0.3 });

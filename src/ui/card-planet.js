@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
-import { cleanString } from "@/utils/string";
 import { useState } from "react";
 
 export default function CardPlanet(props) {
-  const [loading, setLoading] = useState(true);
-  const { terrain, url, name, population } = props.data;
+  const { terrain, url, name, population, image } = props.data;
   const endpoint = props.endpoint;
+  const [loading, setLoading] = useState(true);
   const itemId = url.split("/").filter(Boolean).pop();
-  const cleanName = cleanString(name, "_");
-  const imageSrc = `/planets/${cleanName}.webp`;
   const href = `${endpoint}/${itemId}`;
 
   return (
@@ -24,7 +21,7 @@ export default function CardPlanet(props) {
           )}
           <Image
             className="transform object-cover object-top transition duration-500 group-hover:scale-105"
-            src={imageSrc}
+            src={image}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt=""

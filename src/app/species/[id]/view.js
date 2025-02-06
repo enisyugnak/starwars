@@ -35,10 +35,11 @@ export default function SpeciesDetail({ data }) {
         </div>
 
         {/** Image */}
+
         <ImageHolder
-          image={image}
+          src={image}
           alt={name}
-          className="aspect-[3/4] h-[calc(100vh-140px)] min-h-[400px] w-full"
+          className="relative aspect-[3/4] h-[calc(100vh-140px)] min-h-[400px] w-full"
         />
 
         {/** Details on Image */}
@@ -83,7 +84,7 @@ export default function SpeciesDetail({ data }) {
   );
 }
 
-export function ImageHolder({ image, alt, className }) {
+export function ImageHolder({ src, alt, className }) {
   const [loading, setLoading] = useState(true);
   return (
     <div className="relative">
@@ -92,16 +93,16 @@ export function ImageHolder({ image, alt, className }) {
           <Loading />
         </div>
       )}
-      <figure className={`${className}`}>
+      <div className={`${className}`}>
         <Image
-          src={image}
+          src={src}
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="h-full w-full rounded-md object-cover object-top"
           onLoad={() => setLoading(false)}
         />
-      </figure>
+      </div>
     </div>
   );
 }

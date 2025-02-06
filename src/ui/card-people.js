@@ -11,19 +11,21 @@ export function CardPeople({ item }) {
 
   return (
     <Link href={getPersonId(item.url)}>
-      <div className="group relative flex items-end gap-5 overflow-hidden border border-slate-700/60 bg-slate-800/20 p-1">
+      <div className="group relative flex items-end gap-5 overflow-hidden rounded-md border border-slate-700/60 bg-slate-800/20 p-1">
         <div className="absolute right-2 top-2">{getGender(item.gender)}</div>
-        <div className="min-h-16 min-w-16 overflow-hidden border-slate-700/60">
-          <div className="relative h-full w-full">
+
+        <div className="overflow-hidden rounded-md border-slate-700/60">
+          <div className="relative h-full min-h-20 w-full min-w-16">
             <Image
               src={item.image}
               alt=""
-              width={60}
-              height={60}
-              className="object-cover transition-all duration-300 group-hover:scale-110"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110"
             />
           </div>
         </div>
+
         <div className="z-10 flex flex-col">
           <div className="text-lg font-extrabold text-white transition duration-300 group-hover:-translate-y-4 lg:text-[1.4vw]">
             {item.name}

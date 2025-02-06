@@ -1,11 +1,12 @@
+import useClickOutside from "@/hooks/click-outside";
 import Modal from "@/ui/modal";
-import PreloaderSpinner from "@/ui/preloader-spinner";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function StarshipDetails({ data }) {
   const [isOpen, setIsOpen] = useState(false);
+  const modalPage = useClickOutside(() => setIsOpen(false));
   useEffect(() => {
     if (data) {
       setIsOpen(true);
@@ -16,9 +17,13 @@ export default function StarshipDetails({ data }) {
   const image = `/starships/${cleanName}.webp`;
 
   if (!data) return;
+
   return (
-    <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-      <div className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7">
+    <Modal isOpen={isOpen}>
+      <div
+        ref={modalPage}
+        className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7"
+      >
         {/** Image */}
 
         <ImageLoader image={image} alt={image} className="p-3 lg:col-span-4" />

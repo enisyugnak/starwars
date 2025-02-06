@@ -1,14 +1,8 @@
 import { CardPerson } from "@/ui/card-person";
+import { addImageToJson } from "@/utils/data";
 
 export default function ListResidents({ people }) {
-  const list =
-    people &&
-    people.map((item, index) => {
-      const itemId = item.url.split("/").filter(Boolean).pop();
-      const image = `/people/${itemId}.jpg`;
-      return { ...item, image };
-    });
-
+  const list = addImageToJson(people, "characters");
   return (
     <div>
       <h2 className="mb-5 text-xl font-bold text-white">Residents</h2>
