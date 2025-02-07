@@ -64,7 +64,7 @@ export default function HooksView() {
           </div>
           <div className="space-y-2">
             {/** scroll position on top right of the page */}
-            {/* <ScrollPositionExample /> */}
+            <ScrollPositionExample />
           </div>
 
           <div className="space-y-2">
