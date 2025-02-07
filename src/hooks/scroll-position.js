@@ -12,7 +12,9 @@ const useScrollPosition = () => {
       window.addEventListener("scroll", handleScroll);
     }
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Cleanup on unmount
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleScroll); // Cleanup on unmount
+      }
     };
   }, []);
 
