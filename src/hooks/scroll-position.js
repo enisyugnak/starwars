@@ -4,12 +4,13 @@ const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY); // Get the vertical scroll position
-    };
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        setScrollPosition(window.scrollY); // Get the vertical scroll position
+      };
 
-    window.addEventListener("scroll", handleScroll);
-
+      window.addEventListener("scroll", handleScroll);
+    }
     return () => {
       window.removeEventListener("scroll", handleScroll); // Cleanup on unmount
     };

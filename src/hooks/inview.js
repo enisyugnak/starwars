@@ -15,11 +15,9 @@ export default function useInView({
       ([entry], observer) => {
         if (entry.isIntersecting) {
           setInView(true);
-          console.log("Triggered!");
 
           if (triggerOnce) {
             observer.disconnect();
-            console.log("Observer stopped!");
           }
         } else if (!triggerOnce) {
           setInView(false);
