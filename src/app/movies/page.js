@@ -1,11 +1,10 @@
 import config from "@/services/config";
 import MoviesView from "./view";
-import { fetcUrl } from "@/services/fetch";
+import { fetchPaginatedData } from "@/services/fetch";
 
 export default async function Movies() {
-  const url = `${config.apiUrl}/films`;
-  const data = await fetcUrl(url);
-  const movies = data.results;
+  const url = `${config.apiUrl}/films/`;
+  const data = await fetchPaginatedData(url);
 
-  return <MoviesView movies={movies} />;
+  return <MoviesView movies={data} />;
 }

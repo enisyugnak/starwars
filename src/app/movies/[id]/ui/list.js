@@ -1,10 +1,20 @@
+import { useLoading } from "@/context/loading";
 import useFetchAll from "@/hooks/fetchAll";
 import { addImageToJson } from "@/utils/data";
+import { useEffect } from "react";
 
 export default function SectionList({ list, section, CardComponent }) {
   const { data, loading, error } = useFetchAll(list);
+  const { finishLoading, startLoading } = useLoading();
+  useEffect(() => {
+    startLoading();
+  }, []);
 
-  if (loading) return <p>Loading...</p>;
+  useEffect(() => {
+    finishLoading();
+  }, [data]);
+
+  if (loading) return <p>loading...</p>;
   if (error) return <p>{error}</p>;
 
   const result = addImageToJson(data, section);

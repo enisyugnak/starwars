@@ -11,8 +11,8 @@ export default function SelfButton({ children, ...props }) {
     <Tag
       {...props}
       className={style}
-      href={endpoint}
-      onClick={() => onClick(endpoint)}
+      onClick={onClick ? () => onClick(endpoint) : undefined}
+      href={!onClick ? endpoint : undefined}
     >
       {children}
     </Tag>

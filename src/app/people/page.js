@@ -3,8 +3,8 @@ import PeopleView from "./view";
 import config from "@/services/config";
 
 const People = async () => {
-  const apiUrl = config.apiUrl;
-  const data = await fetcUrl(`${apiUrl}/people`);
+  const url = `${config.apiUrl}/people`;
+  const data = await fetcUrl(url);
 
   return <PeopleView data={data} />;
 };

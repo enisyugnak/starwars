@@ -21,6 +21,7 @@ const useFetchAll = (urls) => {
           fetch(url, fetchOptions).then((res) => res.json()),
         );
         const result = await Promise.all(fetchPromises);
+
         setData([].concat(...result));
       } catch (err) {
         setError(err.message);

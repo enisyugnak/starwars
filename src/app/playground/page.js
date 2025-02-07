@@ -1,13 +1,7 @@
-import config from "@/services/config";
-import PlayGroundView from "./view";
-import { fetchPaginatedData } from "@/services/fetch";
+import PlaygroundView from "./view";
 
-const PlayGround = async () => {
-  const url = `${config.apiUrl}/species/`;
-
-  // const data = await fetchPaginatedData(url);
-
-  return <PlayGroundView />;
+const PlaygroundPage = async () => {
+  return <PlaygroundView />;
 };
 
-export default PlayGround;
+export default PlaygroundPage;

@@ -30,6 +30,7 @@ export function MoviePoster({ item, image }) {
             src={image}
             alt={item.title}
             fill
+            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="relative h-full w-full rounded-md object-cover object-top transition-all duration-300 group-hover:opacity-60 group-hover:ring-2 group-hover:ring-sky-400"
           />

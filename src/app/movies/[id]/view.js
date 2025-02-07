@@ -1,7 +1,8 @@
 "use client";
-import SectionHeader from "@/ui/section-header";
 import Image from "next/image";
 import PageSection from "./ui/section";
+import { useLoading } from "@/context/loading";
+import GlobalLoader from "@/ui/global-loader";
 
 export default function MovieDetail({ data }) {
   const {
@@ -17,9 +18,8 @@ export default function MovieDetail({ data }) {
     vehicles,
     species,
   } = data;
-
   const image = `/movies/episode_${episode_id}.webp`;
-
+  const { isLoading } = useLoading();
   return (
     <div className="flex w-full flex-col">
       {/** Hero Section */}
@@ -46,12 +46,18 @@ export default function MovieDetail({ data }) {
           </div>
         </section>
       </div>
-
-      <PageSection list={planets} section="planets" />
-      <PageSection list={characters} section="characters" />
-      <PageSection list={species} section="species" />
-      <PageSection list={vehicles} section="vehicles" />
-      <PageSection list={starships} section="starships" />
+      {/** wait for all the PageSection data is loaded */}
+      {isLoading ? (
+        <GlobalLoader />
+      ) : (
+        <div>
+          <PageSection list={planets} section="planets" />
+          <PageSection list={characters} section="characters" />
+          <PageSection list={species} section="species" />
+          <PageSection list={vehicles} section="vehicles" />
+          <PageSection list={starships} section="starships" />
+        </div>
+      )}
     </div>
   );
 }
