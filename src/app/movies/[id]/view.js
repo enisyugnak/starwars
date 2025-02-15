@@ -3,6 +3,8 @@ import Image from "next/image";
 import PageSection from "./ui/section";
 import { useLoading } from "@/context/loading";
 import GlobalLoader from "@/ui/global-loader";
+import SectionHeader from "@/ui/section-header";
+import NavSection from "@/ui/nav/nav-section";
 
 export default function MovieDetail({ data }) {
   const {
@@ -51,11 +53,16 @@ export default function MovieDetail({ data }) {
         <GlobalLoader />
       ) : (
         <div>
-          <PageSection list={planets} section="planets" />
           <PageSection list={characters} section="characters" />
+          <PageSection list={planets} section="planets" />
           <PageSection list={species} section="species" />
           <PageSection list={vehicles} section="vehicles" />
           <PageSection list={starships} section="starships" />
+          {/** Site Navigation */}
+          <div>
+            <SectionHeader>Navigation</SectionHeader>
+            <NavSection />
+          </div>
         </div>
       )}
     </div>

@@ -1,10 +1,10 @@
-import { fetcUrl } from "@/services/fetch";
+import { fetchPaginatedData } from "@/services/fetch";
 import PeopleView from "./view";
 import config from "@/services/config";
 
 const People = async () => {
   const url = `${config.apiUrl}/people`;
-  const data = await fetcUrl(url);
+  const data = await fetchPaginatedData(url);
 
   return <PeopleView data={data} />;
 };

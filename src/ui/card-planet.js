@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { useState } from "react";
+import Loading from "@/app/loading";
 
 export default function CardPlanet(props) {
   const { terrain, url, name, population, image } = props.data;
@@ -15,8 +16,8 @@ export default function CardPlanet(props) {
       <Link className="" href={`${href}` || ""}>
         <div className="group relative min-h-[160px] cursor-pointer overflow-hidden">
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-              <span className="h-6 w-6 animate-spin rounded-full border-2 border-gray-400 border-t-transparent"></span>
+            <div className="absolute inset-0 flex items-center justify-center bg-slate-700">
+              <Loading />
             </div>
           )}
           <Image

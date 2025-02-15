@@ -17,6 +17,7 @@ export default function SectionList({ list, section, CardComponent }) {
   if (loading) return <p>loading...</p>;
   if (error) return <p>{error}</p>;
 
+  // this adds images to the json array, section is the folder name of the images.
   const result = addImageToJson(data, section);
 
   return (

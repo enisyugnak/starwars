@@ -3,6 +3,7 @@ import Modal from "@/ui/modal";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import RoundedBlock from "../planets/ui/rounded";
 
 export default function StarshipDetails({ data }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,46 +21,52 @@ export default function StarshipDetails({ data }) {
 
   return (
     <Modal isOpen={isOpen}>
-      <div
-        ref={modalPage}
-        className="grid h-3/4 cursor-default grid-cols-1 gap-5 lg:grid-cols-7"
-      >
+      <div ref={modalPage} className="grid grid-cols-1 gap-3 lg:grid-cols-7">
         {/** Image */}
 
-        <ImageLoader image={image} alt={image} className="p-3 lg:col-span-4" />
+        <ImageLoader
+          image={image}
+          alt={image}
+          className="lg:col-span-4 lg:p-3"
+        />
 
         {/** Details */}
-        <div className="py-3 lg:col-span-3">
-          <h2 className="text-2xl font-bold text-white">{data.name}</h2>
-          <div className="mb-3 text-base">{data.manufacturer}</div>
-          <div className="text-base">
-            cost_in_credits {data.cost_in_credits}
+        <div className="m-5 lg:col-span-3 lg:py-10">
+          <h2 className="text-3xl font-bold text-white">{data.name}</h2>
+          <div className="mb-3 text-sm text-white">{data.starship_class}</div>
+
+          <InfoLine title="Cost">{data.cost_in_credits}</InfoLine>
+          <InfoLine title="Cargo Capacity">{data.cargo_capacity}</InfoLine>
+          <InfoLine title="Consumables">{data.consumables}</InfoLine>
+          <div className="flex gap-3">
+            <RoundedBlock title="Crew">{data.crew}</RoundedBlock>
+            <RoundedBlock title="Passengers">{data.passengers}</RoundedBlock>
+            <RoundedBlock title="Speed">
+              {data.max_atmosphering_speed}
+            </RoundedBlock>
+            <RoundedBlock title="Length">{data.length}</RoundedBlock>
           </div>
-          <div className="text-base">length:{data.length}</div>
-          <div className="text-base">
-            max_atmosphering_speed:{data.max_atmosphering_speed}
-          </div>
-          <div className="text-base">crew: {data.name}</div>
-          <div className="text-base">passengers: {data.passengers}</div>
-          <div className="text-base">cargo_capacity: {data.cargo_capacity}</div>
-          <div className="text-base">consumables: {data.consumables}</div>
-          <div className="text-base">MGLT: {data.MGLT}</div>
-          <div className="text-base">starship_class: {data.starship_class}</div>
-          <div className="text-base">
-            hyperdrive_rating: {data.hyperdrive_rating}
-          </div>
+          <div className="mb-3 text-sm">{data.manufacturer}</div>
         </div>
       </div>
     </Modal>
   );
 }
 
+const InfoLine = ({ title, children }) => {
+  return (
+    <div className="text-base">
+      <span className="text-white">{title}: </span> {children}
+    </div>
+  );
+};
+
 export function ImageLoader({ image, alt = "", className = "" }) {
   const [loading, setLoading] = useState(true);
   return (
     <div className={`${className} relative text-white`}>
       {loading && "loading"}
-      <figure className="relative aspect-video h-full w-full rounded-md">
+      <figure className="relative aspect-video w-full overflow-hidden rounded-md md:h-full">
         <Image
           src={image}
           alt={alt}

@@ -1,30 +1,42 @@
+"use client";
+
 import IconSvg from "@/ui/icon/icon-svg";
 import clsx from "clsx";
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 
 const ResponsiveSlider = ({ images }) => {
+  const initialWidth = 300;
   const [index, setIndex] = useState(0);
-  const [imageWidth, setImageWidth] = useState(300);
+  const [imageWidth, setImageWidth] = useState(initialWidth);
+  const [isReady, setIsReady] = useState(false);
   const containerRef = useRef(null);
 
-  // Calculate image width dynamically
-  useEffect(() => {
-    const updateSizes = () => {
-      if (containerRef.current) {
+  const updateSizes = () => {
+    if (containerRef.current) {
+      requestAnimationFrame(() => {
         const containerWidth = containerRef.current.offsetWidth;
-        const imagesPerPage = Math.floor(containerWidth / 300);
+        const imagesPerPage = Math.floor(containerWidth / initialWidth);
         const newImageWidth = containerWidth / imagesPerPage;
         setImageWidth(newImageWidth);
-      }
-    };
+        !isReady && setIsReady(true);
+      });
+    }
+  };
+
+  // Ensure ref exists before running layout effect
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
     updateSizes();
-    window.addEventListener("resize", updateSizes);
-    return () => window.removeEventListener("resize", updateSizes);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => updateSizes();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const newPosition = index * imageWidth;
-  // Prevent sliding beyond available images
   const imagesPerPage =
     Math.floor(containerRef.current?.offsetWidth / imageWidth) || 1;
   const maxIndex = Math.max(0, images.length - imagesPerPage);
@@ -38,26 +50,33 @@ const ResponsiveSlider = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div
+      className={`relative mb-10 w-full overflow-hidden transition-opacity duration-300 ease-in-out ${isReady ? "block opacity-100" : "invisible opacity-0"}`}
+    >
       <div ref={containerRef} className="relative flex w-full">
         <div
           style={{ transform: `translateX(-${newPosition}px)` }}
-          className="flex transition-all duration-300"
+          className="flex transition-all duration-500 ease-in-out"
         >
           {images.map((item, idx) => {
             return (
               <div
                 key={idx}
-                className="relative aspect-square"
+                className="group relative cursor-pointer p-2"
                 style={{ width: `${imageWidth}px` }}
               >
-                <Image
-                  src={item.image}
-                  alt={`Image ${idx}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="h-full w-full object-cover p-5"
-                />
+                <div className="relative aspect-square overflow-hidden rounded-md transition duration-200 ease-in hover:scale-90">
+                  <Image
+                    src={item.image}
+                    alt={`Image ${idx}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="h-full w-full object-cover object-top"
+                  />
+                  <div className="absolute bottom-5 left-0 bg-slate-900/80 px-3 py-2 text-2xl font-bold">
+                    {item.name}
+                  </div>
+                </div>
               </div>
             );
           })}
