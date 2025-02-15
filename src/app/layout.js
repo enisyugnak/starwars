@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.variable} ${robotoMono.variable} app antialiased`}
       >
-        <div className="flex min-h-screen flex-col">
+        <div className="flex flex-col">
           {/* <div className='flex flex-col min-h-screen bg-cover bg-center bg-[url("/bg/bg5.jpg")]'> */}
           <Header />
           <div className="noise-bg"></div>

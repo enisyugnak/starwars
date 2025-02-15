@@ -5,7 +5,7 @@ export default function CardVehicle({ item }) {
     <div>
       <div className="group cursor-pointer rounded-md bg-slate-700/60 p-3">
         <div className="relative h-full w-full overflow-hidden">
-          <figure className="relative aspect-video">
+          <figure className="relative aspect-video min-h-[200px]">
             <Image
               src={item.image}
               alt=""

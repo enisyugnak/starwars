@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div>
-      <footer className="footer border-base-300 bg-neutral text-neutral-content border-t px-10 py-4">
+      <footer className="footer border-base-300 text-neutral-content border-t bg-slate-700/50 px-10 py-4">
         <aside className="grid-flow-col items-center text-sm">
           Educational project with swapi api by
           <span className="text-white"> SelfLearner</span>

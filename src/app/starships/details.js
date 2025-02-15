@@ -31,14 +31,19 @@ export default function StarshipDetails({ data }) {
         />
 
         {/** Details */}
-        <div className="m-5 lg:col-span-3 lg:py-10">
+        <div className="m-5 flex flex-col lg:col-span-3">
           <h2 className="text-3xl font-bold text-white">{data.name}</h2>
-          <div className="mb-3 text-sm text-white">{data.starship_class}</div>
+
+          <div className="mb-5 text-sm text-white">
+            {data.starship_class}
+            <span className="text-neutral-400"> / {data.manufacturer}</span>
+          </div>
 
           <InfoLine title="Cost">{data.cost_in_credits}</InfoLine>
           <InfoLine title="Cargo Capacity">{data.cargo_capacity}</InfoLine>
           <InfoLine title="Consumables">{data.consumables}</InfoLine>
-          <div className="flex gap-3">
+
+          <div className="mt-auto flex gap-3 pt-3">
             <RoundedBlock title="Crew">{data.crew}</RoundedBlock>
             <RoundedBlock title="Passengers">{data.passengers}</RoundedBlock>
             <RoundedBlock title="Speed">
@@ -46,7 +51,6 @@ export default function StarshipDetails({ data }) {
             </RoundedBlock>
             <RoundedBlock title="Length">{data.length}</RoundedBlock>
           </div>
-          <div className="mb-3 text-sm">{data.manufacturer}</div>
         </div>
       </div>
     </Modal>
