@@ -25,6 +25,7 @@ export default function NavDesktop({ items }) {
               >
                 {item.title}
               </Link>
+              {/** Blue underline on menus */}
               <div className="scale-0 border-b-2 border-b-sky-500 transition duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 group-aria-disabled:translate-y-7 group-aria-disabled:scale-100 group-aria-disabled:opacity-100"></div>
             </div>
           );

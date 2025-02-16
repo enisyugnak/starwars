@@ -1,11 +1,12 @@
 import { CardPerson } from "@/ui/card-person";
 import { addImageToJson } from "@/utils/data";
+import SectionHeader from "./section-header";
 
 export default function ListResidents({ people }) {
   const list = addImageToJson(people, "characters");
   return (
     <div>
-      <h2 className="mb-5 text-xl font-bold text-white">Residents</h2>
+      <SectionHeader>Residents</SectionHeader>
       <div className="flex flex-col">
         {list &&
           list.map((item, index) => {

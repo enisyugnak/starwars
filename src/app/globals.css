@@ -15,25 +15,20 @@
     --foreground: #ededed;
   }
 }
+
 html,
 body {
-  height: auto;
-}
-body {
-  color: var(--text-color);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#root,
-.app {
-  height: auto;
+body {
+  color: var(--text-color);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
-#root {
-  position: relative;
-}
+
 .noise-bg {
   position: fixed;
   background: url("/noisy.png");

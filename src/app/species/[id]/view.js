@@ -36,11 +36,7 @@ export default function SpeciesDetail({ data }) {
 
         {/** Image */}
 
-        <ImageHolder
-          src={image}
-          alt={name}
-          className="relative aspect-[3/4] h-[calc(100vh-140px)] min-h-[400px] w-full"
-        />
+        <ImageHolder src={image} alt={name} />
 
         {/** Details on Image */}
         {/* <div className="absolute bottom-0 left-0 h-auto w-full bg-teal-800 sm:hidden">
@@ -57,15 +53,17 @@ export default function SpeciesDetail({ data }) {
           <RoundedBlock title="Height">{average_height}</RoundedBlock>
           <RoundedBlock title="Lifespan">{average_lifespan}</RoundedBlock>
         </div>
-        <div className="flex flex-col">
-          <div className="text-lg font-bold text-white">Language</div>
-          <div>{language}</div>
+        <div className="flex gap-3">
+          <div className="flex flex-col">
+            <div className="text-lg font-bold text-white">Language</div>
+            <div>{language}</div>
+          </div>
+          <div className="flex flex-col">
+            <div className="text-lg font-bold text-white">Skin Colors</div>
+            <div>{skin_colors}</div>
+          </div>
         </div>
         <div className="flex flex-col">
-          <div className="text-lg font-bold text-white">Skin Colors</div>
-          <div>{skin_colors}</div>
-        </div>
-        <div className="flex w-full flex-col">
           <div className="text-lg font-bold text-white">Hair Colors</div>
           <ColorSpecies colors={hair_colors} />
         </div>
@@ -73,12 +71,6 @@ export default function SpeciesDetail({ data }) {
           <div className="text-lg font-bold text-white">Eye Colors</div>
           <ColorSpecies colors={eye_colors} />
         </div>
-        {/* <div className="break-words">{homeworld}</div>
-          <div>{language}</div>
-          <h1>People</h1>
-          <div className="break-words">{people}</div>
-          <h1>Films </h1>
-          <div className="break-words">{films}</div> */}
       </section>
     </div>
   );
@@ -93,13 +85,13 @@ export function ImageHolder({ src, alt, className }) {
           <Loading />
         </div>
       )}
-      <div className={`${className}`}>
+      <div className="relative aspect-[3/4] h-[calc(100vh-250px)] min-h-[400px] w-full">
         <Image
           src={src}
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="h-full w-full rounded-md object-cover object-top"
+          className="h-full w-full rounded-md object-contain object-top"
           onLoad={() => setLoading(false)}
         />
       </div>

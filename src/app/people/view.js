@@ -3,6 +3,7 @@ import PeopleList from "./list";
 import { addImageToJson } from "@/utils/data";
 import SectionHeader from "@/ui/section-header";
 import { getRandomItems } from "@/utils/array";
+import NavSection from "@/ui/nav/nav-section";
 
 export default function PeopleView({ data }) {
   const dataWithImages = addImageToJson(data, "characters");
@@ -13,6 +14,8 @@ export default function PeopleView({ data }) {
       <ResponsiveSlider images={randomImages} />
       <SectionHeader>People</SectionHeader>
       <PeopleList data={dataWithImages} />
+      <SectionHeader>Navigation</SectionHeader>
+      <NavSection />
     </div>
   );
 }

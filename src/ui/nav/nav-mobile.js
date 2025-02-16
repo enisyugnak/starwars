@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaGlobe } from "react-icons/fa6";
 import { getIcon } from "@/utils/icon";
+import ButtonInfo from "../button-info";
 
 export default function NavMobile({
   items,
@@ -27,8 +27,6 @@ export default function NavMobile({
           />
         </Link>
         <div className="ml-auto flex items-center">
-          {/** Info Button */}
-          <FaGlobe className="mr-3 size-5" />
           {/** Close Button */}
           <button
             onClick={toggleMobileMenu}

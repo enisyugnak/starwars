@@ -11,6 +11,7 @@ const config = {
       },
       animation: {
         slideUp: "slideUp 18s linear infinite",
+        slideDown: "slideDown 18s linear infinite",
       },
       keyframes: {
         slideUp: {
@@ -19,6 +20,14 @@ const config = {
           },
           "100%": {
             transform: "translateY(-50%)",
+          },
+        },
+        slideDown: {
+          "0%": {
+            transform: "translateY(-50%)",
+          },
+          "100%": {
+            transform: "translateY(0)",
           },
         },
       },

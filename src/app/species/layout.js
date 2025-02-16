@@ -14,7 +14,7 @@ export default async function Layout({ children }) {
         <SectionHeader>Species</SectionHeader>
         <div
           id="species-list-container"
-          className="h-[200px] min-h-[400px] w-full overflow-y-auto md:h-[calc(100vh-120px)] md:pr-3"
+          className="h-[190px] min-h-[80px] w-full overflow-y-auto md:h-[calc(100vh-250px)] md:pr-3"
         >
           <List data={data} />
         </div>

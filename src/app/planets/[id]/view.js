@@ -27,26 +27,44 @@ export default async function DetailsPage({ data }) {
   const people = await fetchAll(residents);
   const gravityNumber = gravity.split(" ")[0];
   const cleanName = cleanString(name, "_");
-  const imageSrc = `/planets/${cleanName}.webp`;
+  const image = `/planets/${cleanName}.webp`;
 
   return (
-    <div className="lg:overscroll-y-scroll m-5 flex flex-wrap justify-center gap-8 overscroll-y-none sm:m-3 lg:scrollbar-hide">
+    // <div className="lg:overscroll-y-scroll flex flex-wrap justify-center gap-8 overscroll-y-none sm:m-3 lg:scrollbar-hide">
+    <div className="lg:overscroll-y-scroll grid grid-cols-1 justify-center gap-8 overscroll-y-none md:grid-cols-2 lg:scrollbar-hide">
       {/** Image Column */}
-      <section className="lg:sticky lg:top-[90px] lg:h-[550px]">
-        <div className="rounded-md bg-slate-800/50 p-5">
-          <figure className="group relative h-[240px] w-[320px] cursor-pointer overflow-hidden sm:h-[500px] sm:w-[500px]">
+      <section className="h-full w-full">
+        <div className="relative h-auto w-full rounded-md bg-slate-700/40 p-4">
+          <Image
+            src={image}
+            // sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+            width={300}
+            height={500}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="h-full w-full object-cover object-top"
+            alt=""
+          />
+        </div>
+      </section>
+      {/* <section className="lg:sticky lg:top-[90px] lg:h-[550px]">
+        <div className="h-full w-full rounded-md bg-slate-800/50 p-5">
+          <div className="group relative aspect-square cursor-pointer overflow-hidden sm:h-[500px] sm:w-[500px]">
             <Image
-              src={imageSrc}
+              src={image}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               alt=""
-              className="transform object-cover transition duration-500 group-hover:scale-105"
+              className="h-full w-full transform object-cover transition duration-500 group-hover:scale-105"
             />
-          </figure>
+          </div>
         </div>
-      </section>
+      </section> */}
       {/** Details Column */}
-      <section className="flex w-full flex-col gap-4 break-words sm:w-2/5 sm:min-w-72">
+      <section className="flex w-full flex-col gap-4">
         {/** 1st Row , Title Section */}
         <div className="flex justify-between gap-3 align-middle">
           <h1 className="text-3xl">{name}</h1>
@@ -63,7 +81,7 @@ export default async function DetailsPage({ data }) {
           </InfoRow>
         </div>
         {/** 3rd Row Rounded Infos */}
-        <div className="flex justify-between border-y border-slate-800/70 py-3 sm:gap-2">
+        <div className="flex justify-evenly border-y border-slate-800/70 py-3 md:justify-start md:gap-2">
           <RoundedBlock title="Diameter">{diameter}</RoundedBlock>
           <RoundedBlock title="Gravity">{gravityNumber}</RoundedBlock>
           <RoundedBlock title="Rotation">{rotation_period}</RoundedBlock>
