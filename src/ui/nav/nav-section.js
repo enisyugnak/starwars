@@ -4,7 +4,7 @@ function NavSection() {
   // remove the playground menu item. (to be deleted);
   const menu = config.menu.slice(0, -1);
   return (
-    <section className="relative grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <section className="relative grid h-full w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
       {menu.map((item, index) => {
         return (
           <Item key={index} Icon={item.icon} link={item.link}>
