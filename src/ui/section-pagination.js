@@ -1,29 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import SelfButton from "./button";
+import SelfButton from "./button/button";
 
 export default function Pagination({ count, pageIndex, onPageChange }) {
-  //const [pageIndex, setPageIndex] = useState(0);
   const arr = Array.from({ length: count });
-
-  // useEffect(() => {
-  //   localStorage.setItem("currentPage", pageIndex);
-  // }, [pageIndex]);
 
   function itemClicked(id) {
     onPageChange(id);
-    //setPageIndex(id);
   }
 
   function nextClicked() {
     onPageChange(pageIndex < arr.length - 1 ? pageIndex + 1 : 0);
-    //setPageIndex((prev) => (prev < arr.length - 1 ? prev + 1 : 0));
   }
   function prevClicked() {
     onPageChange((pageIndex) =>
       pageIndex > 0 ? pageIndex - 1 : arr.length - 1,
     );
-    //setPageIndex((prev) => (prev > 0 ? prev - 1 : arr.length - 1));
   }
 
   return (

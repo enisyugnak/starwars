@@ -1,8 +1,8 @@
 "use client";
 import { FaArrowCircleUp } from "react-icons/fa";
 
-import SelfButton from "@/ui/button";
-import PlanetsLoadMore from "@/ui/planets-loadmore";
+import SelfButton from "@/ui/button/button";
+import PlanetsPaginated from "@/ui/planets-paginated";
 
 export default function PlanetsAllView({ initial }) {
   const scrollToTop = () => {
@@ -18,7 +18,7 @@ export default function PlanetsAllView({ initial }) {
         <SelfButton endpoint="/planets/">Back</SelfButton>
       </div>
 
-      <PlanetsLoadMore data={initial} />
+      <PlanetsPaginated data={initial} loadmore={true} />
 
       {/** Scroll Top */}
       <div className="flex justify-end">

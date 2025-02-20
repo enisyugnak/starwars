@@ -1,9 +1,7 @@
 "use client";
 
-import SelfButton from "@/ui/button";
-import { CardPeople } from "@/ui/card-people";
+import { CardPeople } from "@/ui/cards/card-people";
 import Pagination from "@/ui/section-pagination";
-import { addImageToJson } from "@/utils/data";
 import { useEffect, useState } from "react";
 
 export default function PeopleList({ data }) {
@@ -11,10 +9,7 @@ export default function PeopleList({ data }) {
   const [index, setIndex] = useState(0);
   const pageSize = 20;
   const pageCount = Math.ceil(data.length / pageSize);
-  //const [list, setList] = useState(resultImages);
   useEffect(() => {
-    //index && localStorage.setItem("planetsPage", index);
-
     if (data && data.length) {
       const nextValue = index * pageSize;
       const newArr = data.slice(nextValue, nextValue + pageSize);
@@ -25,7 +20,6 @@ export default function PeopleList({ data }) {
   // This function will be called when the page changes in the Pagination component
   const handlePageChange = (newIndex) => {
     setIndex(newIndex);
-    //setPageIndex(newPageIndex); // Triggering the parent's state update
   };
 
   return (
@@ -46,10 +40,6 @@ export default function PeopleList({ data }) {
           )}
         </div>
       </div>
-
-      {/* <SelfButton hidden={!nextPage} onClick={loadPage} className="mt-3">
-        Load More
-      </SelfButton> */}
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { getIcon } from "@/utils/icon";
-import ButtonInfo from "../button-info";
 
 export default function NavToggleButton({ toggleMobileMenu }) {
   return (

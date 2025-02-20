@@ -4,7 +4,7 @@ import { addImageToJson } from "@/utils/data";
 import { fetcUrl } from "@/services/fetch";
 import { useState } from "react";
 import StarshipDetails from "./details";
-import CardStarship from "@/ui/card-starship";
+import CardStarship from "@/ui/cards/card-starship";
 
 export default function StarShipsView({ data }) {
   const [details, setDetails] = useState(null);

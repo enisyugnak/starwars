@@ -1,5 +1,5 @@
 "use client";
-import { CardSpecies } from "@/ui/card-species";
+import { CardSpecies } from "@/ui/cards/card-species";
 import { cleanString } from "@/utils/string";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

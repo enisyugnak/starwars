@@ -1,6 +1,6 @@
-import { CardPerson } from "@/ui/card-person";
 import { addImageToJson } from "@/utils/data";
 import SectionHeader from "./section-header";
+import { CardPerson } from "./cards/card-person";
 
 export default function ListResidents({ people }) {
   const list = addImageToJson(people, "characters");

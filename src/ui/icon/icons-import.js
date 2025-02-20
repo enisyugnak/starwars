@@ -1,6 +1,4 @@
 "use client";
-import { LiaRobotSolid } from "react-icons/lia";
-import { IoFemaleSharp, IoMaleSharp } from "react-icons/io5";
 import { Suspense } from "react";
 import React from "react";
 

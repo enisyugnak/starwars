@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ListResidents from "../../../ui/list-residents";
+import ListResidents from "@/ui/list-residents";
 import InfoRow from "../ui/info";
 import WaterBar from "../ui/waterbar";
 import RoundedBlock from "../ui/rounded";
@@ -7,8 +7,6 @@ import RoundedBlock from "../ui/rounded";
 import { cleanString } from "@/utils/string";
 import { FaHeart } from "react-icons/fa";
 import { fetchAll } from "@/services/fetch";
-import Link from "next/link";
-import SelfBackButton from "@/ui/button-back";
 
 export default async function DetailsPage({ data }) {
   const {

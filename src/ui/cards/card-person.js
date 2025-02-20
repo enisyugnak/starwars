@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getGender } from "./icon/gender";
+import { getGender } from "../icon/gender";
 import Link from "next/link";
 
 export function CardPerson({ item }) {

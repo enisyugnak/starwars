@@ -1,9 +1,9 @@
 import SectionList from "./list";
-import CardVehicle from "@/ui/card-vehicle";
-import { CardPersonBig } from "@/ui/card-person-big";
-import { CardSpecies } from "@/ui/card-species";
-import CardStarship from "@/ui/card-starship";
-import CardPlanetMain from "@/ui/card-planet-main";
+import CardVehicle from "@/ui/cards/card-vehicle";
+import { CardPersonBig } from "@/ui/cards/card-person-big";
+import { CardSpecies } from "@/ui/cards/card-species";
+import CardStarship from "@/ui/cards/card-starship";
+import CardPlanetMain from "@/ui/cards/card-planet-main";
 import SectionHeader from "@/ui/section-header";
 
 export default function PageSection({ section, list }) {
@@ -16,7 +16,7 @@ export default function PageSection({ section, list }) {
   };
 
   return (
-    <section className="w-full">
+    <section className="mt-8 w-full">
       <SectionHeader>{section}</SectionHeader>
       <SectionList
         list={list}

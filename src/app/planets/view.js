@@ -32,7 +32,7 @@ export default function PlanetsView({ list }) {
           </Link>
         </div>
 
-        <PlanetsPaginated data={list} />
+        <PlanetsPaginated data={list} loadmore={false} />
       </section>
 
       {/** Site Navigation */}

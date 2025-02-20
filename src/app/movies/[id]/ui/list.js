@@ -21,7 +21,7 @@ export default function SectionList({ list, section, CardComponent }) {
   const result = addImageToJson(data, section);
 
   return (
-    <div className="grid-cols grid w-full gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {result.map((item, index) => {
         return <CardComponent item={item} key={index} index={index + 1} />;
       })}

@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/loading";
 import RoundedBlock from "@/app/planets/ui/rounded";
-import ColorSpecies from "@/ui/colors-species";
+import ColorSpecies from "@/app/species/[id]/colors";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";

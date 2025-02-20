@@ -2,32 +2,36 @@
 import { useEffect, useState } from "react";
 import ListPlanets from "./list-planets";
 import Pagination from "./section-pagination";
+import SelfButton from "./button/button";
 
-export default function PlanetsPaginated({ data }) {
-  const [list, setList] = useState();
+export default function PlanetsPaginated({ data, loadmore = false }) {
+  const [list, setList] = useState([]);
   const [index, setIndex] = useState(0);
   const pageSize = 10;
   const pageCount = Math.ceil(data.length / pageSize);
 
   useEffect(() => {
-    //const storedPage = localStorage.getItem("planetsPage");
-    //setIndex(storedPage ? Number(storedPage) : 0);
+    return () => {
+      setIndex(0);
+      setList([]);
+    };
   }, []);
 
   useEffect(() => {
-    //index && localStorage.setItem("planetsPage", index);
-
     if (data && data.length) {
       const nextValue = index * pageSize;
       const newArr = data.slice(nextValue, nextValue + pageSize);
-      setList(newArr);
+      loadmore ? setList((prev) => [...prev, ...newArr]) : setList(newArr);
     }
   }, [index, data]);
 
-  // This function will be called when the page changes in the Pagination component
+  // handles load more structure
+  const itemClicked = () => {
+    setIndex((prev) => prev + 1);
+  };
+  // handles numbered pagination
   const handlePageChange = (newIndex) => {
     setIndex(newIndex);
-    //setPageIndex(newPageIndex); // Triggering the parent's state update
   };
 
   return (
@@ -38,11 +42,20 @@ export default function PlanetsPaginated({ data }) {
 
       {/** Pagination */}
       <div className="mt-7 flex justify-center">
-        {pageCount > 1 && (
+        {loadmore ? (
+          <SelfButton
+            onClick={itemClicked}
+            hidden={pageCount === index + 1}
+            className={`${pageCount === index + 1 ? "hidden" : ""}`}
+          >
+            Load More
+          </SelfButton>
+        ) : (
           <Pagination
             count={pageCount}
             pageIndex={index}
             onPageChange={handlePageChange}
+            className={`${pageCount === 1 ? "hidden" : ""}`}
           />
         )}
       </div>

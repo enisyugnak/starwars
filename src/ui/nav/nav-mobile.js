@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getIcon } from "@/utils/icon";
-import ButtonInfo from "../button-info";
 
 export default function NavMobile({
   items,

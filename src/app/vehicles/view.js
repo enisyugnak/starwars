@@ -1,4 +1,4 @@
-import CardVehicle from "@/ui/card-vehicle";
+import CardVehicle from "@/ui/cards/card-vehicle";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
