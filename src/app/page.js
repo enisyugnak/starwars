@@ -1,3 +1,4 @@
+import SelfButton from "@/ui/button/button";
 import HeroMainPage from "@/ui/hero-main";
 import VerticalImageSlider from "@/ui/image/vertical/vertical-slider";
 import NavSection from "@/ui/nav/nav-section";
@@ -47,7 +48,7 @@ export default function Home() {
       <section className="col-span-1 flex h-[600px] flex-col lg:col-span-2">
         {/** Hero Content */}
         <HeroMainPage />
-
+        <SelfButton endpoint="/contact">Contact Me</SelfButton>
         {/** Site Navigation */}
         <div className="my-auto lg:mr-7">
           <NavSection />
@@ -60,7 +61,7 @@ export default function Home() {
         <VerticalImageSlider images={images3} direction="animate-slideDown" />
       </section>
       {/** Credits  */}
-      <section className="col-span-3 mt-7 lg:mt-12">
+      <section className="col-span-3 mt-12">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <CreditsCard title="Design Inspriation">
             <LinkLine link="https://nuron-nextjs.vercel.app/">
