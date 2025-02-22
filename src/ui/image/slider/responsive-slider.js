@@ -5,8 +5,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 
-const ResponsiveSlider = ({ images }) => {
-  const initialWidth = 300;
+const ResponsiveSlider = ({
+  images,
+  initialWidth = "300",
+  aspect = "aspect-square",
+}) => {
   const [index, setIndex] = useState(0);
   const [imageWidth, setImageWidth] = useState(initialWidth);
   const [isReady, setIsReady] = useState(false);
@@ -63,9 +66,14 @@ const ResponsiveSlider = ({ images }) => {
               <div
                 key={idx}
                 className="group relative cursor-pointer p-2"
-                style={{ width: `${imageWidth}px` }}
+                style={{ width: `${imageWidth}px`, height: "100%" }}
               >
-                <div className="relative aspect-square overflow-hidden rounded-md transition duration-200 ease-in hover:scale-90">
+                <div
+                  className={clsx(
+                    "relative overflow-hidden rounded-md transition duration-200 ease-in hover:scale-90",
+                    aspect,
+                  )}
+                >
                   <Image
                     src={item.image}
                     alt={`Image ${idx}`}

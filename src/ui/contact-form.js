@@ -1,6 +1,7 @@
 "use client";
 import Loading from "@/app/loading";
 import { useState } from "react";
+import SectionHeader from "./section-header";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -53,7 +54,8 @@ export default function ContactForm() {
     setForm({ name: "", email: "", message: "" });
   }
   return (
-    <div className="mx-auto max-w-xl">
+    <div className="rounded-md border border-slate-800 px-6 py-3">
+      <SectionHeader>Contact Me</SectionHeader>
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <InputText
           name="name"
@@ -103,7 +105,7 @@ function InputText({ name, value, placeholder, onChange }) {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className="w-full rounded-md border border-slate-700/50 bg-gray-800/50 px-4 py-3 text-sm text-white outline-none transition-all focus:bg-white focus:text-black"
+      className="w-full rounded-md border border-slate-700/50 bg-gray-800/50 px-4 py-3 text-sm text-white outline-none ring-sky-400 transition-all focus:ring-1"
     />
   );
 }
@@ -117,7 +119,7 @@ function InputTextArea({ name, placeholder, value, onChange }) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="w-full rounded-md border border-slate-700/50 bg-gray-800/50 px-4 py-3 text-sm text-white outline-none transition-all focus:bg-white focus:text-black"
+      className="w-full rounded-md border border-slate-700/50 bg-gray-800/50 px-4 py-3 text-sm text-white outline-none ring-sky-400 transition-all focus:ring-1"
     ></textarea>
   );
 }

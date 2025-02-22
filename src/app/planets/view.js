@@ -2,22 +2,49 @@
 import Link from "next/link";
 import SectionHeader from "@/ui/section-header";
 import NavSection from "@/ui/nav/nav-section";
-import HeroPlanets from "@/ui/hero-planets";
 import PlanetsPaginated from "@/ui/planets-paginated";
+import ResponsiveSlider from "@/ui/image/slider/responsive-slider";
 
 export default function PlanetsView({ list }) {
-  const data = {
-    image: "/planets-alpha/toydaria.webp",
-    pill: "61 Planets",
-    title: "Discover your favorite planet in the whole universe",
-    body: "This page is dedicated to StarWars planets. This is an updated list from swapi api.",
-  };
-
+  const planets = [
+    {
+      name: "coruscant",
+      image: "/planets-views/coruscant.webp",
+    },
+    {
+      name: "dagobah",
+      image: "/planets-views/dagobah.webp",
+    },
+    {
+      name: "endor",
+      image: "/planets-views/endor.webp",
+    },
+    {
+      name: "hoth",
+      image: "/planets-views/hoth.webp",
+    },
+    {
+      name: "naboo",
+      image: "/planets-views/naboo.webp",
+    },
+    {
+      name: "tatooine",
+      image: "/planets-views/tatooine.webp",
+    },
+    {
+      name: "yavin",
+      image: "/planets-views/yavin.webp",
+    },
+  ];
   return (
     <div className="flex w-full flex-col gap-10">
       {/** Planets Hero */}
       <section>
-        <HeroPlanets data={data} />
+        <ResponsiveSlider
+          images={planets}
+          initialWidth="400"
+          aspect="aspect-video"
+        />
       </section>
 
       {/** Planets List */}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
 
 export default function Footer() {
@@ -19,7 +20,13 @@ export default function Footer() {
               api by
             </span>
             <span>
-              <a className="text-white"> SelfLearner</a>
+              <Link
+                className="text-white transition duration-300 ease-in hover:text-sky-400"
+                href="/contact"
+              >
+                {" "}
+                SelfLearner
+              </Link>
             </span>
           </div>
           <nav className="md:justify-self-end">

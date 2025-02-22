@@ -4,6 +4,7 @@ import NavMobile from "./nav-mobile";
 import NavDesktop from "./nav-desktop";
 import NavToggleButton from "./nav-toggle";
 import { useState } from "react";
+import ButtonInfo from "../button/button-info";
 
 export default function Navigation() {
   const items = config["menu"];
@@ -20,7 +21,7 @@ export default function Navigation() {
       </div>
 
       {/** Info Button */}
-      {/* <ButtonInfo /> */}
+      <ButtonInfo />
 
       {/**  Mobile Menu */}
       <div className="relative flex h-full sm:hidden">

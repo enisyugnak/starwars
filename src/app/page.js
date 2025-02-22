@@ -43,25 +43,25 @@ export default function Home() {
   ];
 
   return (
-    <div className="grid grid-cols-1 grid-rows-2 justify-center px-3 md:grid-cols-3">
-      <section className="col-span-1 flex h-fit flex-col md:col-span-2">
+    <div className="grid grid-cols-1 px-3 lg:grid-cols-3 lg:grid-rows-2">
+      <section className="col-span-1 flex h-[600px] flex-col lg:col-span-2">
         {/** Hero Content */}
         <HeroMainPage />
 
         {/** Site Navigation */}
-        <div className="mt-12 md:mr-7">
+        <div className="my-auto lg:mr-7">
           <NavSection />
         </div>
       </section>
       {/** Sliding Images */}
-      <section className="hidden w-full gap-3 md:col-span-1 md:flex">
-        <VerticalImageSlider images={images} direction="slideDown" />
-        <VerticalImageSlider images={images2} direction="slideUp" />
-        <VerticalImageSlider images={images3} direction="slideDown" />
+      <section className="hidden w-full gap-3 lg:col-span-1 lg:flex">
+        <VerticalImageSlider images={images} direction="animate-slideDown" />
+        <VerticalImageSlider images={images2} direction="animate-slideUp" />
+        <VerticalImageSlider images={images3} direction="animate-slideDown" />
       </section>
       {/** Credits  */}
-      <section className="col-span-3 md:mt-12">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+      <section className="col-span-3 mt-7 lg:mt-12">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <CreditsCard title="Design Inspriation">
             <LinkLine link="https://nuron-nextjs.vercel.app/">
               Nuron Website

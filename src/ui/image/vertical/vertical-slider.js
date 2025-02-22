@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 export default function VerticalImageSlider({ images, direction }) {
   const [animate, setAnimate] = useState("");
   useEffect(() => {
-    setAnimate(`animate-${direction}`);
-  }, [direction]);
+    setAnimate(direction);
+  }, []);
 
   //const animate = `animate-${direction}`;
 

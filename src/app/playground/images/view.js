@@ -16,12 +16,48 @@ const ImagesView = () => {
     { name: "champala" },
     { name: "corellia" },
   ];
+
+  const planets = [
+    {
+      name: "coruscant",
+      image: "/planets-views/coruscant.webp",
+    },
+    {
+      name: "dagobah",
+      image: "/planets-views/dagobah.webp",
+    },
+    {
+      name: "endor",
+      image: "/planets-views/endor.webp",
+    },
+    {
+      name: "hoth",
+      image: "/planets-views/hoth.webp",
+    },
+    {
+      name: "naboo",
+      image: "/planets-views/naboo.webp",
+    },
+    {
+      name: "tatooine",
+      image: "/planets-views/tatooine.webp",
+    },
+    {
+      name: "yavin",
+      image: "/planets-views/yavin.webp",
+    },
+  ];
+
   const listWithImages = addImageToJson(images, "planets");
   const [loadFinished, setLoadFinished] = useState(false);
 
   return (
     <div className="w-full">
-      <ResponsiveSlider images={listWithImages} />
+      <ResponsiveSlider
+        images={planets}
+        initialWidth="400"
+        aspect="aspect-video"
+      />
       <ImageBase image="/planets/alderaan.webp" alt="" aspect="square" />
       <ImageCard image="/planets/alderaan.webp" onLoad={setLoadFinished} />
     </div>
