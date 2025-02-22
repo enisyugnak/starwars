@@ -1,6 +1,5 @@
 import useDebounce from "@/hooks/debounce";
 import { useEffect, useState } from "react";
-import Button from "./button";
 
 export default function DebounceExample() {
   const [searchTerm, setSearchTerm] = useState("");
