@@ -2,16 +2,6 @@
 import { Suspense } from "react";
 import React from "react";
 
-// export default function SelfIcon({ type, ...props }) {
-//   const icons = {
-//     robot: <LiaRobotSolid {...props} />,
-//     male: <IoMaleSharp {...props} />,
-//     female: <IoFemaleSharp {...props} />,
-//   };
-
-//   return icons[type];
-// }
-
 <svg
   stroke="currentColor"
   fill="currentColor"

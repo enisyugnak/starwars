@@ -1,5 +1,4 @@
 "use client";
-import Loading from "@/app/loading";
 import { useState } from "react";
 import SectionHeader from "./section-header";
 

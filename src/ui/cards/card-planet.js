@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { useState } from "react";
-import Loading from "@/app/loading";
+
+import PreloaderSpinner from "../preloader-spinner";
 
 export default function CardPlanet(props) {
   const { terrain, url, name, population, image } = props.data;
@@ -17,7 +18,7 @@ export default function CardPlanet(props) {
         <div className="group relative min-h-[160px] cursor-pointer overflow-hidden">
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-slate-700">
-              <Loading />
+              <PreloaderSpinner />
             </div>
           )}
           <Image

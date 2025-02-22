@@ -53,3 +53,16 @@ export const removeDuplicatesByKeys = (arr, keys) => {
     return true;
   });
 };
+
+/**
+ * Sorts an array of objects
+ * @param {Array} arr - array of objects
+ * @returns {Array} - sorted Array
+ */
+
+export const sortArray = (data) => {
+  const result = data.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+  return result;
+};

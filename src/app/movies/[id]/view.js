@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import PageSection from "./ui/section";
-import { useLoading } from "@/context/loading";
+import { useLoading } from "@/context/loading-context";
 import GlobalLoader from "@/ui/global-loader";
 import SectionHeader from "@/ui/section-header";
 import NavSection from "@/ui/nav/nav-section";

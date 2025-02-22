@@ -2,11 +2,10 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ResponsiveSlider from "@/ui/image/slider/responsive-slider";
 import { addImageToJson } from "@/utils/data";
-import Loading from "@/app/loading";
-import { LoadingProvider } from "@/context/loading";
+import PreloaderSpinner from "@/ui/preloader-spinner";
 
 const ImagesView = () => {
   const images = [
@@ -66,10 +65,6 @@ const ImagesView = () => {
 
 export default ImagesView;
 
-const ContentWithLoader = ({ children }) => {
-  return <LoadingProvider>{children}</LoadingProvider>;
-};
-
 const ImageCard = ({ image, onLoad = undefined }) => {
   function handleLoad() {
     onLoad?.(false);
@@ -108,7 +103,7 @@ const ImageWithLoader = ({ image, onLoad = undefined }) => {
     <div className="group relative min-h-[160px] cursor-pointer overflow-hidden">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-700/60">
-          <Loading />
+          <PreloaderSpinner />
         </div>
       )}
       <Image

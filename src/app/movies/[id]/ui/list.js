@@ -1,4 +1,4 @@
-import { useLoading } from "@/context/loading";
+import { useLoading } from "@/context/loading-context";
 import useFetchAll from "@/hooks/fetchAll";
 import { addImageToJson } from "@/utils/data";
 import { useEffect } from "react";

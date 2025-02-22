@@ -1,6 +1,6 @@
 import config from "@/services/config";
 import { fetchPaginatedData } from "@/services/fetch";
-import { sortArray } from "@/utils/string";
+import { sortArray } from "@/utils/array";
 import VehiclesView from "./view";
 
 export default async function Vehicles() {

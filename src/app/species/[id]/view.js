@@ -1,7 +1,8 @@
 "use client";
-import Loading from "@/app/loading";
+
 import RoundedBlock from "@/app/planets/ui/rounded";
 import ColorSpecies from "@/app/species/[id]/colors";
+import PreloaderSpinner from "@/ui/preloader-spinner";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
 import Image from "next/image";
@@ -15,10 +16,7 @@ export default function SpeciesDetail({ data }) {
     hair_colors,
     eye_colors,
     average_lifespan,
-    homeworld,
     language,
-    people,
-    films,
   } = data;
 
   const imageName = cleanString(name, "_");
@@ -37,14 +35,6 @@ export default function SpeciesDetail({ data }) {
         {/** Image */}
 
         <ImageHolder src={image} alt={name} />
-
-        {/** Details on Image */}
-        {/* <div className="absolute bottom-0 left-0 h-auto w-full bg-teal-800 sm:hidden">
-            <div>{designation}</div>
-            <div>{skin_colors}</div>
-            <div>{hair_colors}</div>
-            <div>{eye_colors}</div>
-          </div> */}
       </section>
       {/** Details Section */}
 
@@ -76,13 +66,13 @@ export default function SpeciesDetail({ data }) {
   );
 }
 
-export function ImageHolder({ src, alt, className }) {
+export function ImageHolder({ src, alt }) {
   const [loading, setLoading] = useState(true);
   return (
     <div className="relative">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-700/60">
-          <Loading />
+          <PreloaderSpinner />
         </div>
       )}
       <div className="relative aspect-[3/4] h-[calc(100vh-250px)] min-h-[400px] w-full">

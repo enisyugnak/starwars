@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { useState } from "react";
-import Loading from "@/app/loading";
+
+import PreloaderSpinner from "../preloader-spinner";
 
 export default function CardPlanetMain({ item }) {
   const { terrain, url, name, population, image } = item;
-  // const endpoint = props.endpoint;
   const [loading, setLoading] = useState(true);
-  //const itemId = url.split("/").filter(Boolean).pop();
 
   const urlSplit = url.split("/");
   const linkId = urlSplit.slice(-2)[0];
@@ -20,7 +19,7 @@ export default function CardPlanetMain({ item }) {
         <div className="relative min-h-[160px] cursor-pointer overflow-hidden">
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
-              <Loading />
+              <PreloaderSpinner />
             </div>
           )}
           <Image

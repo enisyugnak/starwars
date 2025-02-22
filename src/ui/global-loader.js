@@ -1,6 +1,6 @@
 "use client";
 
-import { useLoading } from "@/context/loading";
+import { useLoading } from "@/context/loading-context";
 import PreloaderSpinner from "./preloader-spinner";
 
 export default function GlobalLoader() {

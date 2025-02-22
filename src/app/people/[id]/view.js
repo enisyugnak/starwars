@@ -1,7 +1,7 @@
 "use client";
 import PageSection from "@/app/movies/[id]/ui/section";
 import RoundedBlock from "@/app/planets/ui/rounded";
-import { LoadingProvider } from "@/context/loading";
+import { LoadingProvider } from "@/context/loading-context";
 import { getGender } from "@/ui/icon/gender";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
