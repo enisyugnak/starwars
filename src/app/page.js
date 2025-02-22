@@ -63,7 +63,7 @@ export default function Home() {
         <VerticalImageSlider images={images3} direction="animate-slideDown" />
       </section>
       {/** Credits  */}
-      <section className="col-span-1">
+      <section className="col-span-3">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <CreditsCard title="Design Inspriation">
             <LinkLine link="https://nuron-nextjs.vercel.app/">
