@@ -44,13 +44,15 @@ export default function Home() {
   ];
 
   return (
-    <div className="grid grid-cols-1 px-3 lg:grid-cols-3 lg:grid-rows-2">
+    <div className="grid grid-cols-1 grid-rows-1 px-3 lg:grid-cols-3 lg:grid-rows-2">
       <section className="col-span-1 flex h-[600px] flex-col lg:col-span-2">
         {/** Hero Content */}
-        <HeroMainPage />
-        <SelfButton endpoint="/contact">Contact Me</SelfButton>
+        <div className="flex flex-col gap-5 py-3">
+          <HeroMainPage />
+          <SelfButton endpoint="/contact">Contact Me</SelfButton>
+        </div>
         {/** Site Navigation */}
-        <div className="my-auto lg:mr-7">
+        <div className="lg:my-auto lg:mr-7">
           <NavSection />
         </div>
       </section>
@@ -61,7 +63,7 @@ export default function Home() {
         <VerticalImageSlider images={images3} direction="animate-slideDown" />
       </section>
       {/** Credits  */}
-      <section className="col-span-3 mt-12">
+      <section className="col-span-1">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           <CreditsCard title="Design Inspriation">
             <LinkLine link="https://nuron-nextjs.vercel.app/">

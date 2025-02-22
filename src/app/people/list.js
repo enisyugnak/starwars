@@ -16,9 +16,12 @@ export default function PeopleList({ data }) {
       setList(newArr);
     }
   }, [index, data]);
-
+  const scrollToTop = () => {
+    window.scrollTo({ top: 400, behavior: "smooth" });
+  };
   // This function will be called when the page changes in the Pagination component
   const handlePageChange = (newIndex) => {
+    scrollToTop();
     setIndex(newIndex);
   };
 

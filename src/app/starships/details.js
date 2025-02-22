@@ -43,7 +43,7 @@ export default function StarshipDetails({ data }) {
           <InfoLine title="Cargo Capacity">{data.cargo_capacity}</InfoLine>
           <InfoLine title="Consumables">{data.consumables}</InfoLine>
 
-          <div className="mt-auto flex gap-3 pt-3">
+          <div className="mt-auto flex gap-1 pt-3 sm:gap-3">
             <RoundedBlock title="Crew">{data.crew}</RoundedBlock>
             <RoundedBlock title="Passengers">{data.passengers}</RoundedBlock>
             <RoundedBlock title="Speed">

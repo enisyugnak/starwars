@@ -1,6 +1,6 @@
 export default function HeroMainPage() {
   return (
-    <div className="flex flex-col gap-3 py-8">
+    <div className="flex flex-col gap-3">
       <h2 className="font-black md:text-4xl xl:text-5xl">
         <span className="text-2xl">Compendium of</span> <br />
         <span className="my-3 text-4xl text-white sm:text-6xl">

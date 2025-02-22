@@ -12,7 +12,7 @@ export default function SpeciesView({ data }) {
 
   return (
     <div className="flex flex-col">
-      <div className="grid-col grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid-col grid gap-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {list.map((item, index) => {
           return <CardSpecies key={index} item={item} index={index + 1} />;
         })}

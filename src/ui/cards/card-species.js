@@ -22,35 +22,34 @@ export const CardSpecies = ({ item, index, dynoClass }) => {
     <Link href={link} className="block">
       <div
         id={`card-${linkId}`}
-        className={`${dynoClass} group flex h-[90px] w-full min-w-[240px] cursor-pointer items-center gap-4 rounded-lg border border-slate-800/70 hover:bg-teal-800/20 sm:gap-2 ${currentLink}`}
+        className={`${dynoClass} group flex w-full min-w-[90px] cursor-pointer items-center gap-4 rounded-lg border border-slate-700 py-2 hover:bg-teal-800/20 sm:gap-2 ${currentLink}`}
       >
         {/** Image */}
 
         <div
           className={
-            "ml-3 min-h-[60px] min-w-[60px] overflow-hidden rounded-full border-4 border-slate-800/70"
+            "ml-3 min-h-[48px] min-w-[48px] overflow-hidden rounded-full border-4 border-slate-800/70 sm:min-h-[64px] sm:min-w-[64px]"
           }
         >
-          <figure className="relative overflow-hidden rounded-full">
+          <div className="relative aspect-square w-full overflow-hidden rounded-full">
             <Image
               src={item.image}
               alt=""
-              width={64}
-              height={64}
-              priority={true}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="transform object-cover duration-300 group-hover:scale-125"
             />
-          </figure>
+          </div>
         </div>
         {/** Details */}
         <div className="flex flex-col">
-          <div className="break-words text-lg font-extrabold text-white group-hover:text-teal-800">
+          <div className="break-words text-base font-extrabold text-white group-hover:text-teal-800 sm:text-lg">
             {item.name}
           </div>
           <p className="text-xs uppercase text-sky-500">{`${item.classification}`}</p>
         </div>
         {/** Numbers */}
-        <div className="ml-auto mr-6 transform text-[30px] font-[700] text-neutral-400/10 duration-300 group-hover:scale-75 sm:text-[50px]">
+        <div className="ml-auto mr-6 hidden transform text-[30px] font-[700] text-neutral-400/10 duration-300 group-hover:scale-75 sm:block sm:text-[50px]">
           {index}
         </div>
       </div>

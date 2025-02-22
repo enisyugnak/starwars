@@ -18,7 +18,7 @@ export default function Pagination({ count, pageIndex, onPageChange }) {
   }
 
   return (
-    <div className="relative flex flex-wrap gap-1">
+    <div className="relative flex gap-2">
       <SelfButton onClick={prevClicked}>Prev</SelfButton>
       {arr.map((item, index) => {
         return (

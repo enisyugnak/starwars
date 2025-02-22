@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa6";
 export default function Footer() {
   return (
     <div>
-      <footer className="border-base-300 text-neutral-content border-t bg-slate-700/50 px-10 py-4">
+      <footer className="border-base-300 text-neutral-content mt-3 border-t bg-slate-700/50 px-10 py-5">
         <div className="flex min-h-10 items-center justify-between align-middle">
           <div className="text-sm">
             <span className="hidden sm:inline">

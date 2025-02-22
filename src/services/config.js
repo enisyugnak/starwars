@@ -15,7 +15,7 @@ const config = {
     { title: "Species", link: "/species", icon: RiRobot3Line },
     { title: "Starships", link: "/starships", icon: RiSpaceShipFill },
     { title: "Vehicles", link: "/vehicles", icon: FaTruckMonster },
-    { title: "Playground", link: "/playground", icon: FaFilm },
+    // { title: "Playground", link: "/playground", icon: FaFilm },
   ],
 };
 export default config;

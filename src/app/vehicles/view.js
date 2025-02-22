@@ -2,7 +2,6 @@ import CardVehicle from "@/ui/cards/card-vehicle";
 import HeroPlanets from "@/ui/hero-planets";
 import SectionHeader from "@/ui/section-header";
 import { cleanString } from "@/utils/string";
-import Image from "next/image";
 
 export default function VehiclesView({ data }) {
   const list =

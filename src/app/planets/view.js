@@ -39,14 +39,20 @@ export default function PlanetsView({ list }) {
   return (
     <div className="flex w-full flex-col gap-10">
       {/** Planets Hero */}
-      <section>
+      <section className="hidden md:block">
         <ResponsiveSlider
           images={planets}
           initialWidth="400"
           aspect="aspect-video"
         />
       </section>
-
+      <section className="block md:hidden">
+        <ResponsiveSlider
+          images={planets}
+          initialWidth="300"
+          aspect="aspect-video"
+        />
+      </section>
       {/** Planets List */}
       <section>
         <div className="flex items-end justify-between">

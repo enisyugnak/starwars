@@ -2,6 +2,7 @@ import "./globals.css";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import Footer from "@/ui/footer";
 import Header from "@/ui/header";
+import ButtonTop from "@/ui/button/button-top";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
           {/* <div className='flex flex-col min-h-screen bg-cover bg-center bg-[url("/bg/bg5.jpg")]'> */}
           <Header />
           <div className="noise-bg"></div>
+          <ButtonTop />
           <div className="relative m-3 flex-1 pt-[80px] sm:m-8">{children}</div>
 
           <Footer />

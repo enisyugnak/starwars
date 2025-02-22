@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function MoviesView({ movies }) {
   return (
     <section>
-      <div className="grid gap-3 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid w-full gap-3 md:grid-cols-3 lg:grid-cols-4">
         {movies &&
           movies.map((item, index) => {
             const image = `/movies/episode_${item.episode_id}.webp`;
@@ -25,7 +25,7 @@ export function MoviePoster({ item, image }) {
   return (
     <div className="group relative w-full cursor-pointer rounded-md bg-slate-700/40 p-2">
       <Link href={link}>
-        <figure className="relative aspect-video min-h-56 w-full">
+        <figure className="relative aspect-video min-h-48 w-full">
           <Image
             src={image}
             alt={item.title}
